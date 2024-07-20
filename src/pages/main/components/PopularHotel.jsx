@@ -15,8 +15,8 @@ const PopularHotel = () => {
             </div>
             <div className="row justify-content-center g-xl-4 g-lg-4 g-md-3 g-4">
                 {
-                    Array(2).fill(null).map(()=>(
-                        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                    Array(2).fill(null).map((i,index)=>(
+                        <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                             <div className="pop-touritem">
                             <a href="#" className="card rounded-3 border m-0">
                                 <div className="flight-thumb-wrapper">

@@ -15,8 +15,8 @@ const Blog = () => {
             </div>
             <div className="row justify-content-center g-4">
                 {
-                    Array(3).fill(null).map(()=>(
-                        <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    Array(3).fill(null).map((i,index)=>(
+                        <div key={index} className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <div className="blogGrid-wrap d-flex flex-column h-100">
                             <div className="blogGrid-pics">
                                 <a href="#" className="d-block"><img src={blogImg} className="img-fluid rounded" alt="Blog image" /></a>

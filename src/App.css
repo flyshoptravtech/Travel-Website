@@ -11,7 +11,7 @@
 .btn:hover,
 .form-control,
 .form-control:focus {
-    box-shadow: none
+    box-shadow: none !important;border: 1px solid  #dee2e6 !important;
 }
 
 .alert p,
@@ -49,46 +49,46 @@ a{
 :root,
 [data-bs-theme=light] {
     --bs-primary: #cd2c22 !important;
-    --bs-primary-bg-subtle: #ffe6e5;
-    --bs-primary-bg-dark: #c4281e;
-    --bs-secondary: #c3d2de;
-    --bs-secondary-bg-subtle: #dae5ee;
-    --bs-success: #27a974;
-    --bs-success-bg-subtle: #d4eee3;
-    --bs-success-bg-dark: #1ea36d;
-    --bs-info: #106BDA;
-    --bs-info-bg-subtle: #cfe1f8;
-    --bs-info-bg-dark: #0b63d0;
-    --bs-warning: #ffc107;
-    --bs-warning-bg-subtle: #fff3cd;
-    --bs-warning-bg-dark: #f0b503;
-    --bs-danger: #CE3426;
-    --bs-danger-bg-subtle: #ffe2e0;
-    --bs-danger-bg-dark: #cb3022;
-    --bs-light: #f4f5f7;
-    --bs-dark: #0e1e2b;
-    --bs-cyan: #04765f;
-    --bs-cyan-bg-subtle: #cdf1e9;
-    --bs-cyan-bg-dark: #036f59;
-    --bs-purple: #6363f5;
-    --bs-purple-bg-subtle: #dedeff;
-    --bs-purple-bg-dark: #5b5bed;
+    --bs-primary-bg-subtle: #ffe6e5 !important;
+    --bs-primary-bg-dark: #c4281e !important;
+    --bs-secondary: #c3d2de !important;
+    --bs-secondary-bg-subtle: #dae5ee !important;
+    --bs-success: #27a974 !important;
+    --bs-success-bg-subtle: #d4eee3 !important;
+    --bs-success-bg-dark: #1ea36d !important;
+    --bs-info: #106BDA !important;
+    --bs-info-bg-subtle: #cfe1f8 !important;
+    --bs-info-bg-dark: #0b63d0 !important;
+    --bs-warning: #ffc107 !important;
+    --bs-warning-bg-subtle: #fff3cd !important;
+    --bs-warning-bg-dark: #f0b503 !important;
+    --bs-danger: #CE3426 !important;
+    --bs-danger-bg-subtle: #ffe2e0 !important;
+    --bs-danger-bg-dark: #cb3022 !important;
+    --bs-light: #f4f5f7 !important;
+    --bs-dark: #0e1e2b !important;
+    --bs-cyan: #04765f !important;
+    --bs-cyan-bg-subtle: #cdf1e9 !important;
+    --bs-cyan-bg-dark: #036f59 !important;
+    --bs-purple: #6363f5 !important;
+    --bs-purple-bg-subtle: #dedeff !important;
+    --bs-purple-bg-dark: #5b5bed !important;
     --bs-primary-rgb: 205, 44, 34 !important;
     --bs-secondary-rgb: 195, 210, 222 !important;
-    --bs-success-rgb: 39, 169, 116;
-    --bs-info-rgb: 16, 107, 218;
-    --bs-warning-rgb: 255, 193, 7;
-    --bs-danger-rgb: 206, 52, 38;
-    --bs-cyan-rgb: 4, 118, 95;
-    --bs-purple-rgb: 99, 99, 245;
-    --bs-light-rgb: 248, 249, 250;
-    --bs-dark-rgb: 14, 30, 43;
+    --bs-success-rgb: 39, 169, 116 !important;
+    --bs-info-rgb: 16, 107, 218 !important;
+    --bs-warning-rgb: 255, 193, 7 !important;
+    --bs-danger-rgb: 206, 52, 38 !important;
+    --bs-cyan-rgb: 4, 118, 95 !important;
+    --bs-purple-rgb: 99, 99, 245 !important;
+    --bs-light-rgb: 248, 249, 250 !important;
+    --bs-dark-rgb: 14, 30, 43 !important;
     --body-font-family: "Jost", sans-serif;
     --heading-font-family: "Jost", sans-serif;
-    --bs-body-color: #2d3033;
-    --paragraphColor: #5d6f7d;
-    --headingColor: #05264e;
-    --fontSize: 15px
+    --bs-body-color: #2d3033 !important;
+    --paragraphColor: #5d6f7d !important;
+    --headingColor: #05264e !important;
+    --fontSize: 15px !important;
 }
 
 .dark #preloader {
@@ -422,13 +422,13 @@ h6 {
 }
 
 .btn {
-    padding: 10px 20px;
-    height: 56px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: .4s;
-    border-radius: .375rem;
+    padding: 10px 20px ;
+    height: 56px ;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: .4s !important;
+    border-radius: .375rem !important;
     overflow: hidden;
     animation-delay: .7s;
     animation-duration: .5s
@@ -797,9 +797,9 @@ h6 {
 
 .btn-whitener,
 .btn-whites {
-    background: var(--bs-white);
-    border-color: var(--bs-white);
-    color: var(--bs-dark)
+    background: var(--bs-white) !important;
+    border-color: var(--bs-white) !important;
+    color: var(--bs-dark) !important;
 }
 
 .btn-gray:active,
@@ -1073,7 +1073,7 @@ textarea.form-control {
     padding-left: 5px
 }
 
-.booking-form__input.guests-input button {
+.booking-form__input.guests-input input {
     position: relative;
     width: 100%;
     margin: 0;
@@ -1092,7 +1092,7 @@ textarea.form-control {
     min-width: 10rem
 }
 
-.booking-form__input.guests-input.mixer-auto>button {
+.booking-form__input.guests-input.mixer-auto>input {
     padding: 0 0 0 12px;
     height: 60px;
     border-radius: .375rem;
@@ -1102,8 +1102,8 @@ textarea.form-control {
     color: #041a28
 }
 
-.booking-form__input.guests-input.mixer-auto>button:after,
-.booking-form__input.guests-input.mixer-auto>button:before,
+.booking-form__input.guests-input.mixer-auto>input:after,
+.booking-form__input.guests-input.mixer-auto>input:before,
 .js-yearlypricing,
 .slideToggle .form-switch input {
     display: none
@@ -2790,9 +2790,9 @@ table.table tr th {
 .btn.show,
 .btn:first-child:active,
 :not(.btn-check)+.btn-check:active {
-    color: var(--bs-white);
-    background: var(--bs-primary);
-    border-color: var(--bs-primary)
+    color: var(--bs-white) !important;
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
 }
 
 .cover .video-block:not(:first-child):not(:last-child) {
@@ -2820,10 +2820,10 @@ table.table tr th {
 }
 
 .btn-secondary {
-    background: #f3f6fa;
-    border-color: #f3f6fa;
-    color: #738594;
-    letter-spacing: .1px
+    background: #f3f6fa !important;
+    border-color: #f3f6fa !important;
+    color: #738594 !important;
+    letter-spacing: .1px !important;
 }
 
 .btn-check+.btn:focus,
@@ -3503,8 +3503,7 @@ nav a:hover {
     z-index: 20000;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    transition-duration: .8s;
-    transition-timing-function: ease
+    transition: all ease-in-out .5s;
 }
 
 .navigation-portrait .nav-menus-wrapper.nav-menus-wrapper-right {

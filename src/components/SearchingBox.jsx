@@ -1,6 +1,50 @@
-import React from 'react'
+import flatpickr from 'flatpickr'
+import React, { useEffect, useState } from 'react'
+import Select from "react-select";
 
 const SearchingBox = () => {
+    const [openGuestBox, setopenGuestBox] = useState(false)
+
+    const options = [
+        {value:"19",label:"Trinidad & Tobago"},
+        {value:"13",label:"Liechtenstein"},
+        {value:"37",label:"British Indian Ocean Territory"},
+        {value:"67",label:"Rwanda"},
+        {value:"71",label:"South Africa"},
+        {value:"86",label:"Belize"},
+        {value:"66",label:"Tanzania"},
+        {value:"53",label:"Wallis & Futuna"},
+    ]
+
+    const selectBoxStyle = {
+        container:()=>({
+            height:"fit-content",padding:".7rem 0.3rem",border:"1px solid #dee2e6",borderRadius:".375rem",display:"flex",backgroundColor:"#fff"
+        }),
+        control:(base,state)=>({
+            ...base,border:"0",outline:"none",boxShadow:state.isFocused ? "":"",width:"100%"
+        }),
+        dropdownIndicator:()=>({
+            display:"none",opacity:"0"
+        }),
+        placeholder:(base)=>({
+            ...base,fontSize:"1rem",fontWeight:"600",padding:"0",color:"#595c5f"
+        }),
+        indicatorSeparator:()=>({
+            backgroundColor:"transparent"
+        }),
+        clearIndicator:()=>({
+            backgroundColor:"transparent"
+        }),
+    }
+
+    useEffect(() => {
+        flatpickr("#checkinout",{
+            // mode: "range",
+            minDate: new Date(),
+            dateFormat: "Y-m-d",
+        })
+    }, [])
+
   return (
     <div className="py-5 bg-primary position-relative">
         <div className="container">
@@ -14,16 +58,13 @@ const SearchingBox = () => {
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
                         <div className="form-group mb-0">
                             <label className="text-light text-uppercase opacity-75">Where</label>
-                            <select className="goingto form-control fw-bold" name="leaving[]" multiple="multiple">
-                            <option value="ny">New York</option>
-                            <option value="sd">San Diego</option>
-                            <option value="sj">San Jose</option>
-                            <option value="ph">Philadelphia</option>
-                            <option value="nl">Nashville</option>
-                            <option value="sf">San Francisco</option>
-                            <option value="hu">Houston</option>
-                            <option value="sa">San Antonio</option>
-                            </select>
+                            <Select 
+                                options={options}
+                                placeholder="Going to"
+                                noOptionsMessage={()=>"No Country Found..."}
+                                styles={selectBoxStyle}
+                                name='goingTo'
+                            />
                         </div>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
@@ -40,8 +81,8 @@ const SearchingBox = () => {
                         <div className="form-group mb-0">
                             <label className="text-light text-uppercase opacity-75">Guests &amp; Rooms</label>
                             <div className="booking-form__input guests-input mixer-auto">
-                            <button name="guests-btn" id="guests-input-btn">1 Guest</button>
-                            <div className="guests-input__options" id="guests-input-options">
+                            <input name="guests" className={`form-control ${openGuestBox ? "open" : ""}`} id="guests-input-btn" readOnly value="1 Adult" onClick={()=>{setopenGuestBox(!openGuestBox)}} />
+                            <div className={`guests-input__options ${openGuestBox ? "open" : ""}`} id="guests-input-options">
                                 <div>
                                 <span className="guests-input__ctrl minus" id="adults-subs-btn"><i className="fa-solid fa-minus" /></span>
                                 <span className="guests-input__value"><span id="guests-count-adults">1</span>Adults</span>
@@ -63,7 +104,7 @@ const SearchingBox = () => {
                         </div>
                         <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                         <div className="form-group mb-0">
-                            <button type="button" className="btn btn-whites text-primary full-width fw-medium"><i className="fa-solid fa-magnifying-glass me-2" />Search</button>
+                            <button type="submit" className="btn btn-whites text-primary full-width fw-medium"><i className="fa-solid fa-magnifying-glass me-2" />Search</button>
                         </div>
                         </div>
                     </div>

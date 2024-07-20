@@ -6,11 +6,18 @@ import { useLocation } from 'react-router-dom'
 
 const Layout = ({header, children}) => {
 
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const [isFixed, setisFixed] = useState(false)
+  const [mobNav, setmob_Nav] = useState(false)
+
+  const setmobNav = () =>{
+    setmob_Nav(!mobNav)
+  }
 
   const navLinks = [
     { name:"Home", path:"/" },
     { name:"Hotel List", path:"/hotel-list" },
+    { name:"Hotel View", path:"/hotel-view" },
   ]
 
   useEffect(() => {
@@ -21,11 +28,14 @@ const Layout = ({header, children}) => {
         setisFixed(false);
       }
     };
-
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleResize);
     };
   }, []);
   
@@ -36,8 +46,10 @@ const Layout = ({header, children}) => {
     <div>
       {
         header === "light" ? 
-        <Header navLinks={navLinks} activeLink={pathname} isFixed={isFixed} /> : 
-        <HeaderLight navLinks={navLinks} activeLink={pathname} isFixed={isFixed} />
+        <Header navLinks={navLinks} activeLink={pathname} isFixed={isFixed} width={viewportWidth} mobNav={mobNav}
+        setmobNav={setmobNav} /> : 
+        <HeaderLight navLinks={navLinks} activeLink={pathname} isFixed={isFixed} width={viewportWidth} mobNav={mobNav}
+        setmobNav={setmobNav}  />
       }
         {children}
         <Footer />

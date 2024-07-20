@@ -16,8 +16,8 @@ const PopularLocation = () => {
             </div>
             <div className="row align-items-center justify-content-center g-xl-4 g-lg-4 g-3">
                 {
-                    Array(3).fill(null).map(()=>(
-                        <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    Array(3).fill(null).map((i,index)=>(
+                        <div key={index} className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                             <div className="card destination-card border-0 rounded-3 overflow-hidden m-0">
                             <div className="destination-card-wraps position-relative">
                                 <div className="destination-card-thumbs">

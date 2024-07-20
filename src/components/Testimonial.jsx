@@ -24,8 +24,8 @@ const Testimonial = () => {
             </div>
             <div className="row align-items-center justify-content-center g-xl-4 g-lg-4 g-md-4 g-3">
                 {
-                    Array(3).fill(null).map(()=>(
-                        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                    Array(3).fill(null).map((i,index)=>(
+                        <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div className="card border rounded-3">
                             <div className="card-body">
                                 <div className="position-absolute top-0 end-0 mt-3 me-3"><span className="square--40 circle text-primary bg-light-primary"><i className="fa-solid fa-quote-right" /></span></div>

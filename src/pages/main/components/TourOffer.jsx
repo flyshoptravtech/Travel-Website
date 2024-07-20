@@ -15,7 +15,7 @@ const TourOffer = () => {
                 <div className="offers-container d-flex align-items-center justify-content-start p-2">
                   <div className="offers-flex position-relative">
                     <div className="offer-tags position-absolute start-0 top-0 mt-2 ms-2"><span className="label text-light bg-danger fw-medium">20% Off</span></div>
-                    <div className="offers-pic"><img src={city1} className="img-fluid rounded" width={110} alt />
+                    <div className="offers-pic"><img src={city1} className="img-fluid rounded" width={110} alt="offer-pic" />
                     </div>
                   </div>
                   <div className="offers-captions ps-3">
@@ -73,7 +73,7 @@ const TourOffer = () => {
                 <div className="offers-container d-flex align-items-center justify-content-start p-2">
                   <div className="offers-flex position-relative">
                     <div className="offer-tags position-absolute start-0 top-0 mt-2 ms-2"><span className="label text-light bg-danger fw-medium">30% Off</span></div>
-                    <div className="offers-pic"><img src={city3} className="img-fluid rounded" width={110} alt />
+                    <div className="offers-pic"><img src={city3} className="img-fluid rounded" width={110} alt="offer-pic-2" />
                     </div>
                   </div>
                   <div className="offers-captions ps-3">

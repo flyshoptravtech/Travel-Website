@@ -15,8 +15,8 @@ const InternationalRoutes = () => {
             </div>
             <div className="row justify-content-center gy-4 gx-3">
                 {
-                    Array(3).fill(null).map(()=>(
-                        <div className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    Array(3).fill(null).map((i,index)=>(
+                        <div key={index} className="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                             <div className="pop-touritem">
                             <a href="flight-search.html" className="card rounded-3 h-100 m-0 shadow-sm">
                                 <div className="flight-thumb-wrapper">

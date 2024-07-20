@@ -1,7 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import twoFive from "../../../assets/img/25602.jpg"
+import flatpickr from 'flatpickr'
+import Select from "react-select"
 
 const Form = () => {
+
+    const [openGuestBox, setopenGuestBox] = useState(false)
+
+    const selectBoxStyle = {
+        container:()=>({
+            height:"fit-content",padding:".7rem 0.3rem",border:"1px solid #dee2e6",borderRadius:".375rem",display:"flex"
+        }),
+        control:(base,state)=>({
+            ...base,border:"0",outline:"none",boxShadow:state.isFocused ? "":"",width:"100%"
+        }),
+        dropdownIndicator:()=>({
+            display:"none",opacity:"0"
+        }),
+        placeholder:(base)=>({
+            ...base,fontSize:"1rem",fontWeight:"600",padding:"0",color:"#595c5f"
+        }),
+        indicatorSeparator:()=>({
+            backgroundColor:"transparent"
+        }),
+        clearIndicator:()=>({
+            backgroundColor:"transparent"
+        }),
+    }
+
+    const options = [
+        {value:"19",label:"Trinidad & Tobago"},
+        {value:"13",label:"Liechtenstein"},
+        {value:"37",label:"British Indian Ocean Territory"},
+        {value:"67",label:"Rwanda"},
+        {value:"71",label:"South Africa"},
+        {value:"86",label:"Belize"},
+        {value:"66",label:"Tanzania"},
+        {value:"53",label:"Wallis & Futuna"},
+    ]
+
+    useEffect(() => {
+        flatpickr("#checkinout",{
+            // mode: "range",
+            minDate: new Date(),
+            dateFormat: "Y-m-d",
+        })
+    }, [])
+    
+
   return (
     <div className="image-cover hero-header bg-white" style={{background: `url('${twoFive}')no-repeat`}} data-overlay={5}>
             <div className="container">
@@ -39,65 +85,63 @@ const Form = () => {
                     <div className="search-wrap bg-white rounded-3 p-3">
                     <div className="tab-content">
                         <div className="tab-pane show active" id="hotels">
-                        <div className="row gy-3 gx-md-3 gx-sm-2">
-                            <div className="col-xl-8 col-lg-7 col-md-12">
-                            <div className="row gy-3 gx-md-3 gx-sm-2">
-                                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
-                                <div className="form-group hdd-arrow mb-0">
-                                    <select className="goingto form-control fw-bold hdd-arrow">
-                                    <option value>Select</option>
-                                    <option value="ny">New York</option>
-                                    <option value="sd">San Diego</option>
-                                    <option value="sj">San Jose</option>
-                                    <option value="ph">Philadelphia</option>
-                                    <option value="nl">Nashville</option>
-                                    <option value="sf">San Francisco</option>
-                                    <option value="hu">Houston</option>
-                                    <option value="sa">San Antonio</option>
-                                    </select>
-                                </div>
-                                </div>
-                                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                <div className="form-group mb-0">
-                                    <input type="text" className="form-control fw-bold" placeholder="Check-In & Check-Out" id="checkinout" readOnly="readonly" />
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div className="col-xl-4 col-lg-5 col-md-12">
-                            <div className="row gy-3 gx-md-3 gx-sm-2">
-                                <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
-                                <div className="form-group mb-0">
-                                    <div className="booking-form__input guests-input mixer-auto">
-                                    <button name="guests-btn" id="guests-input-btn">1 Guest</button>
-                                    <div className="guests-input__options" id="guests-input-options">
-                                        <div>
-                                        <span className="guests-input__ctrl minus" id="adults-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                        <span className="guests-input__value"><span id="guests-count-adults">1</span>Adults</span>
-                                        <span className="guests-input__ctrl plus" id="adults-add-btn"><i className="fa-solid fa-plus" /></span>
-                                        </div>
-                                        <div>
-                                        <span className="guests-input__ctrl minus" id="children-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                        <span className="guests-input__value"><span id="guests-count-children">0</span>Children</span>
-                                        <span className="guests-input__ctrl plus" id="children-add-btn"><i className="fa-solid fa-plus" /></span>
-                                        </div>
-                                        <div>
-                                        <span className="guests-input__ctrl minus" id="room-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                        <span className="guests-input__value"><span id="guests-count-room">0</span>Rooms</span>
-                                        <span className="guests-input__ctrl plus" id="room-add-btn"><i className="fa-solid fa-plus" /></span>
-                                        </div>
+                            <form action="">
+                                <div className="row gy-3 gx-md-3 gx-sm-2">
+                                <div className="col-xl-8 col-lg-7 col-md-12">
+                                <div className="row gy-3 gx-md-3 gx-sm-2">
+                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
+                                    <div className="form-group hdd-arrow mb-0">
+                                        <Select 
+                                            options={options} 
+                                            placeholder="Going to"
+                                            noOptionsMessage={()=>"No Country Found..."}
+                                            styles={selectBoxStyle}
+                                            name='goingTo'
+                                        />
+                                    </div>
+                                    </div>
+                                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                    <div className="form-group mb-0">
+                                        <input type="text" className="form-control fw-bold" placeholder="Check-In & Check-Out" id="checkinout" name='checkinout' readOnly="readonly" />
                                     </div>
                                     </div>
                                 </div>
                                 </div>
-                                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                                <div className="form-group mb-0">
-                                    <button type="button" className="btn btn-primary full-width fw-medium"><i className="fa-solid fa-magnifying-glass me-2" />Search</button>
+                                <div className="col-xl-4 col-lg-5 col-md-12">
+                                <div className="row gy-3 gx-md-3 gx-sm-2">
+                                    <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                                    <div className="form-group mb-0">
+                                        <div className="booking-form__input guests-input mixer-auto">
+                                        <input name="guests" className={`form-control ${openGuestBox ? "open" : ""}`} id="guests-input-btn" readOnly value="1 Adult" onClick={()=>{setopenGuestBox(!openGuestBox)}} />
+                                        <div className={`guests-input__options ${openGuestBox ? "open" : ""}`} id="guests-input-options">
+                                            <div>
+                                            <span className="guests-input__ctrl minus" id="adults-subs-btn"><i className="fa-solid fa-minus" /></span>
+                                            <span className="guests-input__value"><span id="guests-count-adults">1</span>Adults</span>
+                                            <span className="guests-input__ctrl plus" id="adults-add-btn"><i className="fa-solid fa-plus" /></span>
+                                            </div>
+                                            <div>
+                                            <span className="guests-input__ctrl minus" id="children-subs-btn"><i className="fa-solid fa-minus" /></span>
+                                            <span className="guests-input__value"><span id="guests-count-children">0</span>Children</span>
+                                            <span className="guests-input__ctrl plus" id="children-add-btn"><i className="fa-solid fa-plus" /></span>
+                                            </div>
+                                            <div>
+                                            <span className="guests-input__ctrl minus" id="room-subs-btn"><i className="fa-solid fa-minus" /></span>
+                                            <span className="guests-input__value"><span id="guests-count-room">0</span>Rooms</span>
+                                            <span className="guests-input__ctrl plus" id="room-add-btn"><i className="fa-solid fa-plus" /></span>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div className="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                    <div className="form-group mb-0">
+                                        <button type="submit" className="btn btn-primary full-width fw-medium"><i className="fa-solid fa-magnifying-glass me-2" />Search</button>
+                                    </div>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
-                            </div>
-                        </div>	
+                            </form>	
                         </div>
                         <div className="tab-pane" id="flights">
                         <div className="row gx-lg-2 g-3">

@@ -10,7 +10,7 @@ const LoginModal = () => {
                 <a href="#" className="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i className="fa-solid fa-square-xmark" /></a>
             </div>
             <div className="modal-body">
-                <div className="modal-login-form py-4 px-md-3 px-0">
+                <div className="modal-login-form p-md-3 p-0">
                 <form>
                     <div className="form-floating mb-4">
                     <input type="email" className="form-control" placeholder="name@example.com" autoComplete='off' />
