@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const LoginModal = () => {
   return (
@@ -7,7 +8,7 @@ const LoginModal = () => {
             <div className="modal-content" id="loginmodal">
             <div className="modal-header">
                 <h4 className="modal-title fs-6">Login / Register</h4>
-                <a href="#" className="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i className="fa-solid fa-square-xmark" /></a>
+                <div className="text-muted fs-4" data-bs-dismiss="modal" aria-label="Close"><i className="fa-solid fa-square-xmark" /></div>
             </div>
             <div className="modal-body">
                 <div className="modal-login-form p-md-3 p-0">
@@ -24,15 +25,15 @@ const LoginModal = () => {
                     <button type="submit" className="btn btn-primary full-width font--bold btn-lg">Log In</button>
                     </div>
                     <div className="modal-flex-item d-flex align-items-center justify-content-between mb-3">
-                    <div className="modal-flex-last">
-                        <a href="#" className="text-primary fw-medium">Forget Password?</a>
+                    <div className="modal-flex-last" data-bs-dismiss="modal" aria-label="Close">
+                        <Link to="/forgot-password" className="text-primary fw-medium" >Forget Password?</Link>
                     </div>
                     </div>
                 </form>
                 </div>
             </div>
-            <div className="modal-footer align-items-center justify-content-center">
-                <p>Don't have an account yet?<a href="signup.html" className="text-primary fw-medium ms-1">Sign Up</a></p>
+            <div className="modal-footer align-items-center justify-content-center" data-bs-dismiss="modal" aria-label="Close">
+                <p>Don't have an account yet?<Link to="/sign-up" className="text-primary fw-medium ms-1">Sign Up</Link></p>
             </div>
             </div>
         </div>

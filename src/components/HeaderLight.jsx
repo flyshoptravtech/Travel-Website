@@ -23,7 +23,7 @@ const HeaderLight = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav}) => {
                 <ul className="nav-menu">
                     {
                         navLinks.map((item,index)=>(
-                            <li key={index} className={`${activeLink === item.path ? "active" :""}`} onClick={setmobNav} >
+                            <li key={index} className={`${activeLink === item.path ? "active" :""}`} onClick={width >= 993?null :setmobNav} >
                                 <Link to={item.path}>{item.name}</Link>
                             </li>
                         ))

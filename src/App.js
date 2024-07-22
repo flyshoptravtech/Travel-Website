@@ -5,6 +5,8 @@ import HotelListing from './pages/listing/HotelListing';
 import NotFound from './pages/notfound/NotFound';
 import ScrollTop from './components/ScrollTop';
 import HotelView from './pages/hotelView/HotelView';
+import Signup from './pages/signup/Signup';
+import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 
 function App() {
   
@@ -16,6 +18,8 @@ function App() {
             <Route path='/' element={<Main />} />
             <Route path='/hotel-list' element={<HotelListing />} />
             <Route path='/hotel-view' element={<HotelView />} />
+            <Route path='/sign-up' element={<Signup />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
       </BrowserRouter>

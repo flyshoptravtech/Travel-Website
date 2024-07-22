@@ -43,11 +43,12 @@ const Form = () => {
     ]
 
     useEffect(() => {
-        flatpickr("#checkinout",{
-            minDate: new Date(),
+        flatpickr("#checkinout", {
+            mode: "range",
+            minDate: "today",
             dateFormat: "Y-m-d",
-        })
-    }, [])
+        });
+    }, []);
     
 
   return (
