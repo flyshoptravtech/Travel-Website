@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import twoFive from "../../../assets/img/25602.jpg"
 import flatpickr from 'flatpickr'
 import Select from "react-select"
+import svg_stroke from "../../../assets/img/svg_stroke.png"
+import useGuestCounter from '../../assets/addadult'
 
 const Form = () => {
 
+    const { adultsCount, childrenCount, roomCount, subtractValues, addValues, setAdultsCount, setChildrenCount, setRoomCount } = useGuestCounter();
     const [openGuestBox, setopenGuestBox] = useState(false)
 
     const selectBoxStyle = {
@@ -41,7 +44,6 @@ const Form = () => {
 
     useEffect(() => {
         flatpickr("#checkinout",{
-            // mode: "range",
             minDate: new Date(),
             dateFormat: "Y-m-d",
         })
@@ -56,10 +58,7 @@ const Form = () => {
                 <div className="col-xl-9 col-lg-10 col-md-12 col-sm-12">
                     <div className="position-relative text-center mb-5">
                     <h1>Explore The World <span className="position-relative z-4">Around<span className="position-absolute top-50 start-50 translate-middle d-none d-md-block mt-4">
-                            <svg width="185px" height="23px" viewBox="0 0 445.5 23">
-                            <path className="fill-white opacity-7" d="M409.9,2.6c-9.7-0.6-19.5-1-29.2-1.5c-3.2-0.2-6.4-0.2-9.7-0.3c-7-0.2-14-0.4-20.9-0.5 c-3.9-0.1-7.8-0.2-11.7-0.3c-1.1,0-2.3,0-3.4,0c-2.5,0-5.1,0-7.6,0c-11.5,0-23,0-34.5,0c-2.7,0-5.5,0.1-8.2,0.1 c-6.8,0.1-13.6,0.2-20.3,0.3c-7.7,0.1-15.3,0.1-23,0.3c-12.4,0.3-24.8,0.6-37.1,0.9c-7.2,0.2-14.3,0.3-21.5,0.6 c-12.3,0.5-24.7,1-37,1.5c-6.7,0.3-13.5,0.5-20.2,0.9C112.7,5.3,99.9,6,87.1,6.7C80.3,7.1,73.5,7.4,66.7,8 C54,9.1,41.3,10.1,28.5,11.2c-2.7,0.2-5.5,0.5-8.2,0.7c-5.5,0.5-11,1.2-16.4,1.8c-0.3,0-0.7,0.1-1,0.1c-0.7,0.2-1.2,0.5-1.7,1 C0.4,15.6,0,16.6,0,17.6c0,1,0.4,2,1.1,2.7c0.7,0.7,1.8,1.2,2.7,1.1c6.6-0.7,13.2-1.5,19.8-2.1c6.1-0.5,12.3-1,18.4-1.6 c6.7-0.6,13.4-1.1,20.1-1.7c2.7-0.2,5.4-0.5,8.1-0.7c10.4-0.6,20.9-1.1,31.3-1.7c6.5-0.4,13-0.7,19.5-1.1c2.7-0.1,5.4-0.3,8.1-0.4 c10.3-0.4,20.7-0.8,31-1.2c6.3-0.2,12.5-0.5,18.8-0.7c2.1-0.1,4.2-0.2,6.3-0.2c11.2-0.3,22.3-0.5,33.5-0.8 c6.2-0.1,12.5-0.3,18.7-0.4c2.2-0.1,4.4-0.1,6.7-0.1c11.5-0.1,23-0.2,34.6-0.4c7.2-0.1,14.4-0.1,21.6-0.1c12.2,0,24.5,0.1,36.7,0.1 c2.4,0,4.8,0.1,7.2,0.2c6.8,0.2,13.5,0.4,20.3,0.6c5.1,0.2,10.1,0.3,15.2,0.4c3.6,0.1,7.2,0.4,10.8,0.6c10.6,0.6,21.1,1.2,31.7,1.8 c2.7,0.2,5.4,0.4,8,0.6c2.9,0.2,5.8,0.4,8.6,0.7c0.4,0.1,0.9,0.2,1.3,0.3c1.1,0.2,2.2,0.2,3.2-0.4c0.9-0.5,1.6-1.5,1.9-2.5 c0.6-2.2-0.7-4.5-2.9-5.2c-1.9-0.5-3.9-0.7-5.9-0.9c-1.4-0.1-2.7-0.3-4.1-0.4c-2.6-0.3-5.2-0.4-7.9-0.6 C419.7,3.1,414.8,2.9,409.9,2.6z">
-                            </path>
-                            </svg>
+                            <img src={svg_stroke} alt="" style={{filter:"invert()"}} />
                         </span></span> You</h1>
                     <p className="fs-5 fw-light">Take a little break from the work strss of everyday. Discover plan trip and
                         explore beautiful destinations.</p>
@@ -112,22 +111,22 @@ const Form = () => {
                                     <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                                     <div className="form-group mb-0">
                                         <div className="booking-form__input guests-input mixer-auto">
-                                        <input name="guests" className={`form-control ${openGuestBox ? "open" : ""}`} id="guests-input-btn" readOnly value="1 Adult" onClick={()=>{setopenGuestBox(!openGuestBox)}} />
+                                        <input name="guests" className={`form-control ${openGuestBox ? "open" : ""}`} id="guests-input-btn" readOnly value={`${adultsCount} Adult${adultsCount>1 ? 's':""}${childrenCount > 0 ? `, ${childrenCount} Children${childrenCount > 1 ? 's':""}` : ''}${roomCount > 0 ? `, ${roomCount} Rooms` : ''}`} onClick={()=>{setopenGuestBox(!openGuestBox)}} />
                                         <div className={`guests-input__options ${openGuestBox ? "open" : ""}`} id="guests-input-options">
                                             <div>
-                                            <span className="guests-input__ctrl minus" id="adults-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                            <span className="guests-input__value"><span id="guests-count-adults">1</span>Adults</span>
-                                            <span className="guests-input__ctrl plus" id="adults-add-btn"><i className="fa-solid fa-plus" /></span>
+                                            <span className="guests-input__ctrl minus" id="adults-subs-btn" onClick={() => subtractValues(adultsCount, 1, setAdultsCount)}><i className="fa-solid fa-minus" /></span>
+                                            <span className="guests-input__value"><span id="guests-count-adults">{adultsCount}</span>Adults</span>
+                                            <span className="guests-input__ctrl plus" id="adults-add-btn" onClick={() => addValues(adultsCount, setAdultsCount)}><i className="fa-solid fa-plus"  /></span>
                                             </div>
                                             <div>
-                                            <span className="guests-input__ctrl minus" id="children-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                            <span className="guests-input__value"><span id="guests-count-children">0</span>Children</span>
-                                            <span className="guests-input__ctrl plus" id="children-add-btn"><i className="fa-solid fa-plus" /></span>
+                                            <span className="guests-input__ctrl minus" id="children-subs-btn" onClick={() => subtractValues(childrenCount, 0, setChildrenCount)}><i className="fa-solid fa-minus" /></span>
+                                            <span className="guests-input__value"><span id="guests-count-children">{childrenCount}</span>Childrens</span>
+                                            <span className="guests-input__ctrl plus" id="children-add-btn" onClick={() => addValues(childrenCount, setChildrenCount)}><i className="fa-solid fa-plus" /></span>
                                             </div>
                                             <div>
-                                            <span className="guests-input__ctrl minus" id="room-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                            <span className="guests-input__value"><span id="guests-count-room">0</span>Rooms</span>
-                                            <span className="guests-input__ctrl plus" id="room-add-btn"><i className="fa-solid fa-plus" /></span>
+                                            <span className="guests-input__ctrl minus" id="room-subs-btn" onClick={() => subtractValues(roomCount, 0, setRoomCount)}><i className="fa-solid fa-minus" /></span>
+                                            <span className="guests-input__value"><span id="guests-count-room">{roomCount}</span>Rooms</span>
+                                            <span className="guests-input__ctrl plus" id="room-add-btn" onClick={() => addValues(roomCount, setRoomCount)}><i className="fa-solid fa-plus" /></span>
                                             </div>
                                         </div>
                                         </div>

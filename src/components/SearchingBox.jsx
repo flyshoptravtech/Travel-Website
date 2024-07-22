@@ -1,8 +1,11 @@
 import flatpickr from 'flatpickr'
 import React, { useEffect, useState } from 'react'
 import Select from "react-select";
+import useGuestCounter from '../pages/assets/addadult';
 
 const SearchingBox = () => {
+
+    const { adultsCount, childrenCount, roomCount, subtractValues, addValues, setAdultsCount, setChildrenCount, setRoomCount } = useGuestCounter();
     const [openGuestBox, setopenGuestBox] = useState(false)
 
     const options = [
@@ -79,26 +82,24 @@ const SearchingBox = () => {
                     <div className="row align-items-end gy-3 gx-md-3 gx-sm-2">
                         <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8">
                         <div className="form-group mb-0">
-                            <label className="text-light text-uppercase opacity-75">Guests &amp; Rooms</label>
                             <div className="booking-form__input guests-input mixer-auto">
-                            <input name="guests" className={`form-control ${openGuestBox ? "open" : ""}`} id="guests-input-btn" readOnly value="1 Adult" onClick={()=>{setopenGuestBox(!openGuestBox)}} />
-                            <div className={`guests-input__options ${openGuestBox ? "open" : ""}`} id="guests-input-options">
+                                <input name="guests" className={`form-control ${openGuestBox ? "open" : ""}`} id="guests-input-btn" readOnly value={`${adultsCount} Adult${adultsCount>1 ? 's':""}${childrenCount > 0 ? `, ${childrenCount} Children${childrenCount > 1 ? 's':""}` : ''}${roomCount > 0 ? `, ${roomCount} Rooms` : ''}`} onClick={()=>{setopenGuestBox(!openGuestBox)}} />
+                                <div className={`guests-input__options ${openGuestBox ? "open" : ""}`} id="guests-input-options"><div>
+                                <span className="guests-input__ctrl minus" id="adults-subs-btn" onClick={() => subtractValues(adultsCount, 1, setAdultsCount)}><i className="fa-solid fa-minus" /></span>
+                                <span className="guests-input__value"><span id="guests-count-adults">{adultsCount}</span>Adults</span>
+                                <span className="guests-input__ctrl plus" id="adults-add-btn" onClick={() => addValues(adultsCount, setAdultsCount)}><i className="fa-solid fa-plus"  /></span>
+                                            </div>
                                 <div>
-                                <span className="guests-input__ctrl minus" id="adults-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                <span className="guests-input__value"><span id="guests-count-adults">1</span>Adults</span>
-                                <span className="guests-input__ctrl plus" id="adults-add-btn"><i className="fa-solid fa-plus" /></span>
+                                <span className="guests-input__ctrl minus" id="children-subs-btn" onClick={() => subtractValues(childrenCount, 0, setChildrenCount)}><i className="fa-solid fa-minus" /></span>
+                                <span className="guests-input__value"><span id="guests-count-children">{childrenCount}</span>Childrens</span>
+                                <span className="guests-input__ctrl plus" id="children-add-btn" onClick={() => addValues(childrenCount, setChildrenCount)}><i className="fa-solid fa-plus" /></span>
                                 </div>
                                 <div>
-                                <span className="guests-input__ctrl minus" id="children-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                <span className="guests-input__value"><span id="guests-count-children">0</span>Children</span>
-                                <span className="guests-input__ctrl plus" id="children-add-btn"><i className="fa-solid fa-plus" /></span>
+                                    <span className="guests-input__ctrl minus" id="room-subs-btn" onClick={() => subtractValues(roomCount, 0, setRoomCount)}><i className="fa-solid fa-minus" /></span>
+                                    <span className="guests-input__value"><span id="guests-count-room">{roomCount}</span>Rooms</span>
+                                    <span className="guests-input__ctrl plus" id="room-add-btn" onClick={() => addValues(roomCount, setRoomCount)}><i className="fa-solid fa-plus" /></span>
                                 </div>
-                                <div>
-                                <span className="guests-input__ctrl minus" id="room-subs-btn"><i className="fa-solid fa-minus" /></span>
-                                <span className="guests-input__value"><span id="guests-count-room">0</span>Rooms</span>
-                                <span className="guests-input__ctrl plus" id="room-add-btn"><i className="fa-solid fa-plus" /></span>
                                 </div>
-                            </div>
                             </div>
                         </div>
                         </div>
