@@ -3,12 +3,16 @@ import Layout from '../layout/Layout'
 import SearchingBox from '../../components/SearchingBox'
 import ListBox from './ListBox'
 import Sidebar from './Sidebar'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const HotelListing = () => {
+
+    const {goingTo,checkout,checkin,guests} = useParams()
+    const totalGuests = guests.split(" ")
+    
   return (
     <Layout>
-        <SearchingBox/>
+        <SearchingBox goingTo={goingTo} checkin={checkin} checkout={checkout} totalGuests={totalGuests} />
         <section className="gray-simple">
             <div className="container">
                 <div className="row justify-content-between gy-4 gx-xl-4 gx-lg-3 gx-md-3 gx-4">

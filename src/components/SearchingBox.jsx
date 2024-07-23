@@ -2,51 +2,27 @@ import flatpickr from 'flatpickr'
 import React, { useEffect, useState } from 'react'
 import Select from "react-select";
 import useGuestCounter from '../pages/assets/addadult';
+import toIST from '../helpers/currentDate';
+import Options from '../helpers/Options';
 
-const SearchingBox = () => {
+const SearchingBox = ({goingTo,checkout,checkin,totalGuests}) => {
 
     const { adultsCount, childrenCount, roomCount, subtractValues, addValues, setAdultsCount, setChildrenCount, setRoomCount } = useGuestCounter();
     const [openGuestBox, setopenGuestBox] = useState(false)
+    const [selectedCity, setSelectedCity] = useState(null);
+    console.log(goingTo);
 
-    const options = [
-        {value:"19",label:"Trinidad & Tobago"},
-        {value:"13",label:"Liechtenstein"},
-        {value:"37",label:"British Indian Ocean Territory"},
-        {value:"67",label:"Rwanda"},
-        {value:"71",label:"South Africa"},
-        {value:"86",label:"Belize"},
-        {value:"66",label:"Tanzania"},
-        {value:"53",label:"Wallis & Futuna"},
-    ]
-
-    const selectBoxStyle = {
-        container:()=>({
-            height:"fit-content",padding:".7rem 0.3rem",border:"1px solid #dee2e6",borderRadius:".375rem",display:"flex",backgroundColor:"#fff"
-        }),
-        control:(base,state)=>({
-            ...base,border:"0",outline:"none",boxShadow:state.isFocused ? "":"",width:"100%"
-        }),
-        dropdownIndicator:()=>({
-            display:"none",opacity:"0"
-        }),
-        placeholder:(base)=>({
-            ...base,fontSize:"1rem",fontWeight:"600",padding:"0",color:"#595c5f"
-        }),
-        indicatorSeparator:()=>({
-            backgroundColor:"transparent"
-        }),
-        clearIndicator:()=>({
-            backgroundColor:"transparent"
-        }),
-    }
+    const {CityOptions,selectBoxStyle} = Options();
 
     useEffect(() => {
         flatpickr("#checkinout",{
-            // mode: "range",
-            minDate: new Date(),
+            mode: "range",
+            minDate: toIST(new Date()), 
             dateFormat: "Y-m-d",
+            defaultDate: [checkin, checkout]
         })
-    }, [])
+        // eslint-disable-next-line
+    }, [checkin,checkout])
 
   return (
     <div className="py-5 bg-primary position-relative">
@@ -62,11 +38,13 @@ const SearchingBox = () => {
                         <div className="form-group mb-0">
                             <label className="text-light text-uppercase opacity-75">Where</label>
                             <Select 
-                                options={options}
+                                options={CityOptions}
                                 placeholder="Going to"
                                 noOptionsMessage={()=>"No Country Found..."}
                                 styles={selectBoxStyle}
                                 name='goingTo'
+                                defaultValue={selectedCity}
+                                onChange={setSelectedCity}
                             />
                         </div>
                         </div>

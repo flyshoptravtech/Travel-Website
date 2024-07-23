@@ -3858,6 +3858,12 @@ a.selectCountry.active>div:last-child {
     background: #fff;
     color: #031925 !important
 }
+.nav-menu.nav-menu-social>li.list-buttons.light a.bg-danger {
+    color: #fff !important
+}
+.nav-menu.nav-menu-social>li.list-buttons.light a.text-danger {
+    color: red !important
+}
 
 .header.header-theme .nav-menu.nav-menu-social>li.list-buttons.light:hover>a {
     color: #0f393b !important
@@ -5262,9 +5268,9 @@ a#back2Top {
     }
 
     .hero-header {
-        min-height: 650px;
-        padding: 7rem 0;
-        height: 100vh
+        min-height: 400px;
+        padding: 2rem 0;
+        height: 80vh
     }
 
     .change-logo.header-fixed .nav-brand.fixed-logo,
