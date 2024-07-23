@@ -3855,8 +3855,7 @@ a.selectCountry.active>div:last-child {
 }
 
 .nav-menu.nav-menu-social>li.list-buttons.light a {
-    background: #fff;
-    color: #031925 !important
+    background: #fff;color: #031925 !important
 }
 .nav-menu.nav-menu-social>li.list-buttons.light a.bg-danger {
     color: #fff !important
