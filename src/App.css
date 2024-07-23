@@ -2149,7 +2149,7 @@ nav a {
 }
 
 .bg-img-holder:not([class*=col-]),
-.mobile_nav ul .dhsbrd li .account-drop ul li a,
+.mobile_nav>ul .dhsbrd li .account-drop ul li a,
 .navigation-portrait .nav-menu {
     width: 100%
 }
@@ -2858,7 +2858,7 @@ table.table tr th {
     font-size: 15px
 }
 
-.mobile_nav ul .dhsbrd li,
+.mobile_nav>ul .dhsbrd li,
 .nav-menu>li>a,
 nav a {
     display: inline-block
@@ -4074,19 +4074,19 @@ a.careerBox {
     background: #03a9f4
 }
 
-.mobile_nav ul {
+.mobile_nav>ul {
     padding: 0;
     margin: 0;
     display: inline-flex
 }
 
-.mobile_nav ul li {
+.mobile_nav>ul li {
     list-style: none;
     margin-left: 0;
     display: inline-flex
 }
 
-.mobile_nav ul li a {
+.mobile_nav>ul li a {
     height: 50px;
     width: 50px;
     font-weight: 500;
@@ -4096,12 +4096,12 @@ a.careerBox {
     justify-content: center
 }
 
-.mobile_nav ul .dhsbrd li {
+.mobile_nav>ul .dhsbrd li {
     margin: 0;
     width: auto !important
 }
 
-.mobile_nav ul .dhsbrd li a {
+.mobile_nav>ul .dhsbrd li a {
     border: none !important;
     width: auto;
     display: inline-flex
@@ -5684,7 +5684,7 @@ a#back2Top {
         width: 100%
     }
 
-    .mobile_nav ul li a {
+    .mobile_nav>ul li a {
         padding: .8rem 1rem
     }
 
