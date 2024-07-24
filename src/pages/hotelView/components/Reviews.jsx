@@ -1,5 +1,6 @@
 import React from "react";
 import userImg from "../../../assets/img/team-1.jpg"
+import { Link } from "react-router-dom";
 
 const Reviews = () => {
   return (
@@ -38,9 +39,9 @@ const Reviews = () => {
           <div className="sbms-rewsbox">
             <div className="alert alert-success text-center" role="alert">
               Login your account to submit reviews{" "}
-              <a href="#" className="text-dark">
+              <Link to="#" className="text-dark">
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         </div>

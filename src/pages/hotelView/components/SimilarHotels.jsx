@@ -1,5 +1,6 @@
 import React from 'react'
 import hotelImg from "../../../assets/img/hotel/hotel-8.jpg"
+import { Link } from 'react-router-dom'
 
 const SimilarHotels = () => {
   return (
@@ -13,7 +14,7 @@ const SimilarHotels = () => {
             </div>
             <div className="col-4">
                 <div className="text-end grpx-btn">
-                <a href="#" className="btn btn-primary btn-md fw-medium">More<i className="fa-solid fa-arrow-trend-up ms-2" /></a>
+                <Link to="#" className="btn btn-primary btn-md fw-medium">More<i className="fa-solid fa-arrow-trend-up ms-2" /></Link>
                 </div>
             </div>
             </div>
@@ -22,10 +23,10 @@ const SimilarHotels = () => {
                     Array(3).fill().map((i,index)=>(
                         <div key={index} className="carousel-cell col-xl-4 col-md-6 col-12">
                                 <div className="pop-touritem">
-                                <a href="#" className="card rounded-3 border br-dashed m-0">
+                                <Link to="#" className="card rounded-3 border br-dashed m-0">
                                     <div className="flight-thumb-wrapper">
                                     <div className="popFlights-item-overHidden">
-                                        <img src={hotelImg} className="img-fluid" alt />
+                                        <img src={hotelImg} className="img-fluid" alt="true" />
                                     </div>
                                     </div>
                                     <div className="touritem-middle position-relative p-3">
@@ -81,7 +82,7 @@ const SimilarHotels = () => {
                                         </div>
                                     </div>
                                     </div>
-                                </a>
+                                </Link>
                                 </div>
                         </div>
                     ))

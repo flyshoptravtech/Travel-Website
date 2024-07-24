@@ -1,5 +1,6 @@
 import React from 'react'
 import blogImg from "../assets/img/blog-1.jpg"
+import { Link } from 'react-router-dom'
 
 const Blog = () => {
   return (
@@ -19,15 +20,15 @@ const Blog = () => {
                         <div key={index} className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                             <div className="blogGrid-wrap d-flex flex-column h-100">
                             <div className="blogGrid-pics">
-                                <a href="#" className="d-block"><img src={blogImg} className="img-fluid rounded" alt="Blog image" /></a>
+                                <Link to="#" className="d-block"><img src={blogImg} className="img-fluid rounded" alt="Blog" /></Link>
                             </div>
                             <div className="blogGrid-caps pt-3">
                                 <div className="d-flex align-items-center mb-1"><span className="label text-success bg-light-success">Destination</span></div>
-                                <h4 className="fw-bold fs-6 lh-base"><a href="#" className="text-dark">Make Your Next Journey Delhi To Paris in
-                                    Comfirtable And Best Price</a></h4>
+                                <h4 className="fw-bold fs-6 lh-base"><Link to="#" className="text-dark">Make Your Next Journey Delhi To Paris in
+                                    Comfirtable And Best Price</Link></h4>
                                 <p className="mb-3">Think of a news blog that's filled with content hourly on the Besides, random text risks
                                 to be unintendedly humorous or offensive day of going live.</p>
-                                <a className="text-primary fw-medium" href="#">Read More<i className="fa-solid fa-arrow-trend-up ms-2" /></a>
+                                <Link className="text-primary fw-medium" to="#">Read More<i className="fa-solid fa-arrow-trend-up ms-2" /></Link>
                             </div>
                             </div>
                         </div>

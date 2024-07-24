@@ -11,7 +11,7 @@ const TourOffer = () => {
         <div className="row align-items-center justify-content-center g-xl-4 g-lg-4 g-md-3 g-4">
           <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
             <div className="pop-touritems">
-              <a href="#" className="card rounded-3 border br-dashed border-2 m-0">
+              <Link to="#" className="card rounded-3 border br-dashed border-2 m-0">
                 <div className="offers-container d-flex align-items-center justify-content-start p-2">
                   <div className="offers-flex position-relative">
                     <div className="offer-tags position-absolute start-0 top-0 mt-2 ms-2"><span className="label text-light bg-danger fw-medium">20% Off</span></div>
@@ -35,7 +35,7 @@ const TourOffer = () => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
@@ -44,7 +44,7 @@ const TourOffer = () => {
                 <div className="offers-container d-flex align-items-center justify-content-start p-2">
                   <div className="offers-flex position-relative">
                     <div className="offer-tags position-absolute start-0 top-0 mt-2 ms-2"><span className="label text-light bg-danger fw-medium">15% Off</span></div>
-                    <div className="offers-pic"><img src={city2} className="img-fluid rounded" width={110} alt="Tour Image" />
+                    <div className="offers-pic"><img src={city2} className="img-fluid rounded" width={110} alt="true" />
                     </div>
                   </div>
                   <div className="offers-captions ps-3">
@@ -69,7 +69,7 @@ const TourOffer = () => {
           </div>
           <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12">
             <div className="pop-touritems">
-              <a href="#" className="card rounded-3 border br-dashed border-2 m-0">
+              <Link to="#" className="card rounded-3 border br-dashed border-2 m-0">
                 <div className="offers-container d-flex align-items-center justify-content-start p-2">
                   <div className="offers-flex position-relative">
                     <div className="offer-tags position-absolute start-0 top-0 mt-2 ms-2"><span className="label text-light bg-danger fw-medium">30% Off</span></div>
@@ -93,7 +93,7 @@ const TourOffer = () => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

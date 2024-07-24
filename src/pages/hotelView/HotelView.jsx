@@ -5,6 +5,7 @@ import roomImg from "../../assets/img/hotel/hotel-10.jpg";
 import Faq from './components/Faq';
 import Reviews from './components/Reviews';
 import SimilarHotels from './components/SimilarHotels';
+import { Link } from 'react-router-dom';
 
 const HotelView = () => {
   return (
@@ -16,8 +17,8 @@ const HotelView = () => {
                 <div className="col-xl-12 col-lg-12 col-md-12">
                     <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="#" className="text-primary">Home</a></li>
-                        <li className="breadcrumb-item"><a href="#" className="text-primary">Hotel in Denver, USA</a></li>
+                        <li className="breadcrumb-item"><Link to="#" className="text-primary">Home</Link></li>
+                        <li className="breadcrumb-item"><Link to="#" className="text-primary">Hotel in Denver, USA</Link></li>
                         <li className="breadcrumb-item active" aria-current="page">Royal Plaza on Scotts</li>
                     </ol>
                     </nav>
@@ -63,15 +64,15 @@ const HotelView = () => {
                         {
                             Array(6).fill(null).map((i,index)=>(
                                 <div key={index} className="galleryGrid__item relative d-flex">
-                                    <a href="assets/img/hotel/hotel-1.jpg" data-lightbox="roadtrip"><img src={hotelImg} alt="image" className="rounded-2 img-fluid" /></a>
+                                    <Link to="assets/img/hotel/hotel-1.jpg" data-lightbox="roadtrip"><img src={hotelImg} alt="true" className="rounded-2 img-fluid" /></Link>
                                 </div>
                             ))
                         }
                         <div className="galleryGrid__item position-relative">
-                        <a href="assets/img/hotel/hotel-7.jpg" data-lightbox="roadtrip"><img src={hotelImg} alt="image" className="rounded-2 img-fluid" /></a>
+                        <Link to="assets/img/hotel/hotel-7.jpg" data-lightbox="roadtrip"><img src={hotelImg} alt="true" className="rounded-2 img-fluid" /></Link>
                         <div className="position-absolute end-0 bottom-0 mb-3 me-3">
-                            <a href="assets/img/hotel/hotel-7.jpg" data-lightbox="roadtrip" className="btn btn-md btn-whites fw-medium text-dark"><i className="fa-solid fa-caret-right me-1" />16
-                            More Photos</a>
+                            <Link to="assets/img/hotel/hotel-7.jpg" data-lightbox="roadtrip" className="btn btn-md btn-whites fw-medium text-dark"><i className="fa-solid fa-caret-right me-1" />16
+                            More Photos</Link>
                         </div>
                         </div>
                     </div>
@@ -135,7 +136,7 @@ const HotelView = () => {
                 {/* Login Alert */}
                 <div className="col-xl-12 col-lg-12 col-md-12">
                     <div className="d-flex align-items-center justify-content-start py-3 px-3 rounded-2 bg-success mb-4">
-                    <p className="text-light fw-semibold m-0"><i className="fa-solid fa-gift text-warning me-2" /><a href="#" className="text-white text-decoration-underline">Login</a> or <a href="#" className="text-white text-decoration-underline">Register</a> to earn upto 100 coins (approx 1.72 US$)
+                    <p className="text-light fw-semibold m-0"><i className="fa-solid fa-gift text-warning me-2" /><Link to="#" className="text-white text-decoration-underline">Login</Link> or <Link to="#" className="text-white text-decoration-underline">Register</Link> to earn upto 100 coins (approx 1.72 US$)
                         after check-out.
                     </p><p>
                     </p></div>
@@ -152,7 +153,7 @@ const HotelView = () => {
                         <div className="col-xl-3 col-lg-4 col-md-4">
                             <div className="roomavls-groups">
                             <div className="roomavls-thumb mb-2">
-                                <img src={roomImg} className="img-fluid rounded-2" alt />
+                                <img src={roomImg} className="img-fluid rounded-2" alt="true" />
                             </div>
                             <div className="roomavls-caps">
                                 <div className="roomavls-escols d-flex align-items-start mb-2">
@@ -168,8 +169,8 @@ const HotelView = () => {
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-snowflake me-2" />Air Conditioning</span></li>
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-cash-register me-2" />Refrigerator</span></li>
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-tty me-2" />Telephone</span></li>
-                                    <li className="col-12"><a href="#" className="text-primary fw-medium text-md">Show More Room
-                                        Amenties</a></li>
+                                    <li className="col-12"><Link to="#" className="text-primary fw-medium text-md">Show More Room
+                                        Amenties</Link></li>
                                 </ul>
                                 </div>
                             </div>
@@ -181,7 +182,7 @@ const HotelView = () => {
                             <div className="d-flex align-items-sm-end justify-content-between flex-sm-row flex-column">
                                 <div className="typsofrooms-wrap">
                                 <div className="d-flex align-items-center">
-                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><a href="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></a>
+                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><Link to="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></Link>
                                 </div>
                                 <div className="typsofrooms-groups d-flex align-items-start">
                                     <div className="typsofrooms-brk1 mb-4">
@@ -220,7 +221,7 @@ const HotelView = () => {
                             <div className="d-flex align-items-sm-end justify-content-between flex-sm-row flex-column">
                                 <div className="typsofrooms-wrap">
                                 <div className="d-flex align-items-center">
-                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><a href="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></a>
+                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><Link to="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></Link>
                                 </div>
                                 <div className="typsofrooms-groups d-flex align-items-start">
                                     <div className="typsofrooms-brk1 mb-4">
@@ -267,7 +268,7 @@ const HotelView = () => {
                         <div className="col-xl-3 col-lg-4 col-md-4">
                             <div className="roomavls-groups">
                             <div className="roomavls-thumb mb-2">
-                                <img src={roomImg} className="img-fluid rounded-2" alt />
+                                <img src={roomImg} className="img-fluid rounded-2" alt="true" />
                             </div>
                             <div className="roomavls-caps">
                                 <div className="roomavls-escols d-flex align-items-start mb-2">
@@ -283,8 +284,8 @@ const HotelView = () => {
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-snowflake me-2" />Air Conditioning</span></li>
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-cash-register me-2" />Refrigerator</span></li>
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-tty me-2" />Telephone</span></li>
-                                    <li className="col-12"><a href="#" className="text-primary fw-medium text-md">Show More Room
-                                        Amenties</a></li>
+                                    <li className="col-12"><Link to="#" className="text-primary fw-medium text-md">Show More Room
+                                        Amenties</Link></li>
                                 </ul>
                                 </div>
                             </div>
@@ -296,7 +297,7 @@ const HotelView = () => {
                             <div className="d-flex align-items-sm-end justify-content-between flex-sm-row flex-column">
                                 <div className="typsofrooms-wrap">
                                 <div className="d-flex align-items-center">
-                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><a href="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></a>
+                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><Link to="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></Link>
                                 </div>
                                 <div className="typsofrooms-groups d-flex align-items-start">
                                     <div className="typsofrooms-brk1 mb-4">
@@ -335,7 +336,7 @@ const HotelView = () => {
                             <div className="d-flex align-items-sm-end justify-content-between flex-sm-row flex-column">
                                 <div className="typsofrooms-wrap">
                                 <div className="d-flex align-items-center">
-                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><a href="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></a>
+                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><Link to="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></Link>
                                 </div>
                                 <div className="typsofrooms-groups d-flex align-items-start">
                                     <div className="typsofrooms-brk1 mb-4">
@@ -382,7 +383,7 @@ const HotelView = () => {
                         <div className="col-xl-3 col-lg-4 col-md-4">
                             <div className="roomavls-groups">
                             <div className="roomavls-thumb mb-2">
-                                <img src={roomImg} className="img-fluid rounded-2" alt />
+                                <img src={roomImg} className="img-fluid rounded-2" alt="true" />
                             </div>
                             <div className="roomavls-caps">
                                 <div className="roomavls-escols d-flex align-items-start mb-2">
@@ -398,8 +399,8 @@ const HotelView = () => {
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-snowflake me-2" />Air Conditioning</span></li>
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-cash-register me-2" />Refrigerator</span></li>
                                     <li className="col-6"><span className="text-muted-2 text-md"><i className="fa-solid fa-tty me-2" />Telephone</span></li>
-                                    <li className="col-12"><a href="#" className="text-primary fw-medium text-md">Show More Room
-                                        Amenties</a></li>
+                                    <li className="col-12"><Link to="#" className="text-primary fw-medium text-md">Show More Room
+                                        Amenties</Link></li>
                                 </ul>
                                 </div>
                             </div>
@@ -411,7 +412,7 @@ const HotelView = () => {
                             <div className="d-flex align-items-sm-end justify-content-between flex-sm-row flex-column">
                                 <div className="typsofrooms-wrap">
                                 <div className="d-flex align-items-center">
-                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><a href="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></a>
+                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><Link to="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></Link>
                                 </div>
                                 <div className="typsofrooms-groups d-flex align-items-start">
                                     <div className="typsofrooms-brk1 mb-4">
@@ -450,7 +451,7 @@ const HotelView = () => {
                             <div className="d-flex align-items-sm-end justify-content-between flex-sm-row flex-column">
                                 <div className="typsofrooms-wrap">
                                 <div className="d-flex align-items-center">
-                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><a href="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></a>
+                                    <h6 className="fs-6 fw-semibold mb-1 me-2">Your Choice</h6><Link to="#" className="text-muted fs-6"><i className="fa-solid fa-circle-question" /></Link>
                                 </div>
                                 <div className="typsofrooms-groups d-flex align-items-start">
                                     <div className="typsofrooms-brk1 mb-4">
@@ -542,25 +543,25 @@ const HotelView = () => {
                                 <ul className="row align-items-center g-3 p-0 mb-0">
                                 <li className="col-xl-3 col-lg-3 col-md-6 col-6">
                                     <div className="d-flex flex-column align-items-center rounded border br-dashed p-2">
-                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt /></div>
+                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt="true" /></div>
                                     <div className="tedfr-caps text-center "><span className="text-muted-2">Meeting Room</span></div>
                                     </div>
                                 </li>
                                 <li className="col-xl-3 col-lg-3 col-md-6 col-6">
                                     <div className="d-flex flex-column align-items-center rounded border br-dashed p-2">
-                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt /></div>
+                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt="true" /></div>
                                     <div className="tedfr-caps text-center "><span className="text-muted-2">Restaurant</span></div>
                                     </div>
                                 </li>
                                 <li className="col-xl-3 col-lg-3 col-md-6 col-6">
                                     <div className="d-flex flex-column align-items-center rounded border br-dashed p-2">
-                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt /></div>
+                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt="true" /></div>
                                     <div className="tedfr-caps text-center "><span className="text-muted-2">Playground</span></div>
                                     </div>
                                 </li>
                                 <li className="col-xl-3 col-lg-3 col-md-6 col-6">
                                     <div className="d-flex flex-column align-items-center rounded border br-dashed p-2">
-                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt /></div>
+                                    <div className="room-alsyruk mb-2"><img src={roomImg} className="img-fluid rounded" alt="true" /></div>
                                     <div className="tedfr-caps text-center "><span className="text-muted-2">Night Bars</span></div>
                                     </div>
                                 </li>

@@ -13,7 +13,7 @@ const Layout = ({ header, children }) => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    localStorage.removeItem("authToken");
+    localStorage.clear();
     toast.success("Logout Successfully..");
     navigate("/");
   };

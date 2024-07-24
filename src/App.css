@@ -3848,11 +3848,15 @@ a.selectCountry.active>div:last-child {
 .nav-menu.nav-menu-social>li.list-buttons a {
     border-radius: 4px;
     position: relative;
-    background: var(--bs-primary);
     top: 0;
     padding: 14px;
     color: #fff !important
 }
+
+.nav-menu.nav-menu-social>li.list-buttons a.butt {
+    background: var(--bs-primary) !important;
+}
+
 
 .nav-menu.nav-menu-social>li.list-buttons.light a {
     background: #fff;color: #031925 !important
@@ -5269,7 +5273,7 @@ a#back2Top {
     .hero-header {
         min-height: 400px;
         padding: 2rem 0;
-        height: 80vh
+        height: 100vh
     }
 
     .change-logo.header-fixed .nav-brand.fixed-logo,

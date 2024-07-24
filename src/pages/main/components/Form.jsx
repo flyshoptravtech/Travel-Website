@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import twoFive from "../../../assets/img/25602.jpg"
+import twoFive from "../../../assets/img/banner-3.jpg"
 import flatpickr from 'flatpickr'
 import svg_stroke from "../../../assets/img/svg_stroke.png"
 import useGuestCounter from '../../assets/addadult'

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => {
   return (
@@ -11,7 +12,7 @@ const Sidebar = () => {
                 <p className="text-md text-muted m-0">Showing 180 Hotels</p>
               </div>
               <div className="searchBar-headerlast text-end">
-                <a href="#" className="text-md fw-medium text-primary active">Clear All</a>
+                <Link to="#" className="text-md fw-medium text-primary active">Clear All</Link>
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ const PopularLocation = () => {
                             <div className="card destination-card border-0 rounded-3 overflow-hidden m-0">
                             <div className="destination-card-wraps position-relative">
                                 <div className="destination-card-thumbs">
-                                <div className="destinations-pics"><Link to="/"><img src={locationImg} className="img-fluid" alt="location image" /></Link>
+                                <div className="destinations-pics"><Link to="/"><img src={locationImg} className="img-fluid" alt="location" /></Link>
                                 </div>
                                 </div>
                                 <div className="destination-card-description position-absolute start-0 bottom-0 ps-4 pb-4 z-2">

@@ -39,7 +39,7 @@ const HeaderLight = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authTok
                             :
                         <ul className="nav-menu nav-menu-social align-to-right">
                             <li className="list-buttons light position-relative">
-                                <Link to="#" className='bg-danger' type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link to="#" className='bg-danger butt' type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className="fa-regular fa-circle-user fs-6 me-2" /> Hii, User
                                 </Link>
                                 <ul className="dropdown-menu dropdown-menu-end">

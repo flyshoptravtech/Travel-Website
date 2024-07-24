@@ -1,5 +1,6 @@
 import React from "react";
 import hotelImg from "../../assets/img/hotel/hotel-1.jpg"
+import { Link } from "react-router-dom";
 
 const ListBox = () => {
   return (
@@ -11,7 +12,7 @@ const ListBox = () => {
               <img
                 className="img-fluid h-100 object-fit"
                 src={hotelImg}
-                alt="image"
+                alt="hotel"
               />
             </div>
           </div>
@@ -44,9 +45,9 @@ const ListBox = () => {
                 </li>
                 <li className="col-auto">
                   <p className="text-muted-2 text-md">
-                    <a href="#" className="text-primary">
+                    <Link to="#" className="text-primary">
                       Show on Map
-                    </a>
+                    </Link>
                   </p>
                 </li>
               </ul>
@@ -71,9 +72,9 @@ const ListBox = () => {
                 </div>
                 <div className="text-md">
                   <p className="m-0">
-                    <a href="#" className="text-primary">
+                    <Link to="#" className="text-primary">
                       Login
-                    </a>{" "}
+                    </Link>{" "}
                     &amp; get additional $15 Off Using
                     <span className="text-primary">Visa card</span>
                   </p>
@@ -110,13 +111,13 @@ const ListBox = () => {
                 <div className="text-muted-2 text-sm">For 2 Nights</div>
               </div>
               <div className="d-flex align-items-start align-items-md-end text-start text-md-end flex-column">
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="btn btn-md btn-primary full-width fw-medium px-lg-4 pt-2"
                 >
                   See Availability
                   <i className="fa-solid fa-arrow-trend-up ms-2" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

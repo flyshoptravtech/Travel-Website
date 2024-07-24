@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import loginSvg from "../../assets/img/login.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 const Signup = () => {
 
+    const authToken = localStorage.getItem("authToken")
     const apiUrl = process.env.REACT_APP_API_URL
     const [togglePass, settogglePass] = useState(false)
     const navigate = useNavigate()
@@ -39,7 +40,13 @@ const Signup = () => {
         })
     }
 
-    console.log(apiUrl);
+    useEffect(() => {
+      if(authToken){
+        navigate("/")
+        return ;
+      }
+    }, [authToken,navigate])
+    
 
   return (
     <>

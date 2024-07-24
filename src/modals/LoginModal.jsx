@@ -2,10 +2,12 @@ import axios from 'axios'
 import React, { useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import CryptoJS from "crypto-js"
 
 const LoginModal = () => {
 
     const apiUrl = process.env.REACT_APP_API_URL
+    const secret = process.env.REACT_APP_SECRET_KEY
     const navigate = useNavigate()
 
     const axiosHeaders = {
@@ -18,13 +20,20 @@ const LoginModal = () => {
         const data = Object.fromEntries(form.entries())
         axios.post(`${apiUrl}login`,data,axiosHeaders)
         .then(res=>{
-            const status = res.data.status
-            if(status === 400){
-                toast.error(res.data.message.error);
+            const mess = res.data.message
+            if(mess.username){
+                toast.error(mess.username[0])
+                return;
+            }else if(mess.password){
+                toast.error(mess.password[0])
+            }else if(mess.error){
+                toast.error(mess.error)
             }else{
-                toast.success(res.data.message);
+                toast.success(mess)
                 document.getElementById("ModalClosed").click();
                 localStorage.setItem("authToken",res.data.token)
+                const userinfo = CryptoJS.AES.encrypt(JSON.stringify(res.data.data), secret).toString();
+                localStorage.setItem("userInfo",userinfo)
                 navigate("/")
                 setTimeout(() => {
                     window.location.reload()
@@ -65,11 +74,11 @@ const LoginModal = () => {
                 <div className="modal-login-form p-md-3 p-0">
                 <form onSubmit={handleLogin}>
                     <div className="form-floating mb-4">
-                    <input type="text" className="form-control" name='username' placeholder="name@example.com" autoComplete='off' required id='loginEmail' ref={myInputRef} />
+                    <input type="text" className="form-control" name='username' placeholder="name@example.com" autoComplete='off' id='loginEmail' ref={myInputRef} />
                     <label>Email / Phone Number</label>
                     </div>
                     <div className="form-floating mb-4">
-                    <input type="password" className="form-control" name='password' placeholder="Password" autoComplete='off' required />
+                    <input type="password" className="form-control" name='password' placeholder="Password" autoComplete='off' />
                     <label>Password</label>
                     </div>
                     <div className="form-group">
