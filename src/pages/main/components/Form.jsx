@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import twoFive from "../../../assets/img/25602.jpg"
 import flatpickr from 'flatpickr'
-import Select from "react-select"
 import svg_stroke from "../../../assets/img/svg_stroke.png"
 import useGuestCounter from '../../assets/addadult'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import options from '../../../helpers/Options'
+import SearchInputBox from '../../../components/SearchInputBox'
+import SubmitForm from '../../../helpers/SubmitForm'
 
 const Form = () => {
 
     const { adultsCount, childrenCount, roomCount, subtractValues, addValues, setAdultsCount, setChildrenCount, setRoomCount } = useGuestCounter();
     const [openGuestBox, setopenGuestBox] = useState(false)
-    const navigate = useNavigate()
-    const {CityOptions,selectBoxStyle}  = options()
+    const {handleSubmitForm} = SubmitForm()
 
     useEffect(() => {
         flatpickr("#checkinout", {
@@ -22,25 +19,6 @@ const Form = () => {
             dateFormat: "Y-m-d",
         });
     }, []);
-
-    const handleSubmitForm = (e) =>{
-        e.preventDefault();
-        const data = new FormData(e.target);
-        const formData = Object.fromEntries(data.entries())
-        const {goingTo,checkinout,guests} = formData
-        const dateArray = checkinout.split(" ")
-        const checkinDate = dateArray[0]
-        const checkoutDate = dateArray[2]
-        if(goingTo === ""){
-            toast.error("Please select any city...")
-        }else if(checkinDate === ""){
-            toast.error("Please select Date...")
-        }else{
-            console.log(goingTo,checkinDate,checkoutDate,guests);
-            navigate(`/hotel-list/${goingTo}/${checkinDate}/${checkoutDate}/${guests}`)
-        }
-    }
-    
 
   return (
     <div className="image-cover hero-header bg-white" style={{background: `url('${twoFive}')no-repeat`}} data-overlay={5}>
@@ -65,13 +43,7 @@ const Form = () => {
                                 <div className="row gy-3 gx-md-3 gx-sm-2">
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 position-relative">
                                     <div className="form-group hdd-arrow mb-0">
-                                        <Select 
-                                            options={CityOptions} 
-                                            placeholder="Going to"
-                                            noOptionsMessage={()=>"No Country Found..."}
-                                            styles={selectBoxStyle}
-                                            name='goingTo'
-                                        />
+                                        <SearchInputBox/>
                                     </div>
                                     </div>
                                     <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6">

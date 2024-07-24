@@ -1,6 +1,6 @@
 import React from 'react'
-import logo_light from "../assets/img/logo-light.png"
-import logo from "../assets/img/logo.png"
+import logo_light from "../assets/img/logo-icon.png"
+import logo from "../assets/img/logo-icon.png"
 import { Link } from 'react-router-dom'
 
 const Header = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authToken,userLinks}) => {    
@@ -18,13 +18,13 @@ const Header = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authToken,us
                     {
                         authToken === null ?
                         <li>
-                            <a className="bg-light-primary text-primary rounded" data-bs-toggle="modal" data-bs-target="#login"><i className="fa-regular fa-circle-user fs-6" /></a>
+                            <Link to="#" className="bg-light-primary text-primary rounded" data-bs-toggle="modal" data-bs-target="#login"><i className="fa-regular fa-circle-user fs-6" /></Link>
                         </li>
                         :
                         <li className='dropdown'>
-                            <a className="bg-light-primary text-primary rounded" type='button' data-bs-toggle="dropdown" aria-expanded="false">
+                            <Link to="#" className="bg-light-primary text-primary rounded" type='button' data-bs-toggle="dropdown" aria-expanded="false">
                                 <i className="fa-regular fa-circle-user fs-6" />
-                            </a>
+                            </Link>
                             <ul className="dropdown-menu dropdown-menu-end">
                                 {
                                     userLinks.map((item,index)=>(
@@ -54,15 +54,15 @@ const Header = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authToken,us
                         authToken === null ?
                         <ul className="nav-menu nav-menu-social align-to-right">
                             <li className="list-buttons light">
-                                <a href='#' data-bs-toggle="modal" data-bs-target="#login"><i className="fa-regular fa-circle-user fs-6 me-2" />Log In / Register</a>
+                                <Link to='#' data-bs-toggle="modal" data-bs-target="#login"><i className="fa-regular fa-circle-user fs-6 me-2" />Log In / Register</Link>
                             </li>
                         </ul>
                             :
                         <ul className="nav-menu nav-menu-social align-to-right">
                             <li className="list-buttons light position-relative">
-                                <a type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <Link to="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className="fa-regular fa-circle-user fs-6 me-2" /> Hii, User
-                                </a>
+                                </Link>
                                 <ul className="dropdown-menu dropdown-menu-end">
                                     {
                                         userLinks.map((item,index)=>(

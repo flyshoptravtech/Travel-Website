@@ -15,7 +15,7 @@ const ForgotPassword = () => {
                     {/* Vector Image */}
                     <div className="col-lg-6 d-flex align-items-center order-2 order-lg-1">
                     <div className="p-3 p-lg-5">
-                        <img src={authSvg} className="img-fluid" alt />
+                        <img src={authSvg} className="img-fluid" alt="true" />
                     </div>
                     {/* Divider */}
                     <div className="vr opacity-1 d-none d-lg-block" />
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
                     <div className="p-4 p-sm-7">
                         {/* Logo */}
                         <div>
-                        <img className="img-fluid mb-4" src={logoSvg} width={70} alt="logo" />
+                        <img className="img-fluid mb-4" src={logoSvg} style={{height:"40px"}} alt="logo" />
                         </div>
                         {/* Title */}
                         <h1 className="mb-2 fs-2">Forgot Password?</h1>

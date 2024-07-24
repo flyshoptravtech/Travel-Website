@@ -20,7 +20,7 @@ const Experience = () => {
             <div className="row align-items-center justify-content-between">
             <div className="col-xl-5 col-lg-5 col-md-6">
                 <div className="position-relative">
-                <img src={mainImg} className="img-fluid rounded-3 position-relative z-1" alt />
+                <img src={mainImg} className="img-fluid rounded-3 position-relative z-1" alt="true" />
                 <div className="position-absolute bottom-0 start-0 z-index-1 mb-4 ms-2">
                     <div className="bg-body d-flex d-inline-block rounded-3 position-relative p-3 z-2 shadow-wrap">
                     {/* Avatar group */}

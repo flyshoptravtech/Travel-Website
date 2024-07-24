@@ -21,7 +21,7 @@ const InternationalRoutes = () => {
                             <a href="flight-search.html" className="card rounded-3 h-100 m-0 shadow-sm">
                                 <div className="flight-thumb-wrapper">
                                 <div className="popFlights-item-overHidden">
-                                    <img src={routesImg} className="img-fluid" alt />
+                                    <img src={routesImg} className="img-fluid" alt="true" />
                                 </div>
                                 </div>
                                 <div className="touritem-middle position-relative p-3">

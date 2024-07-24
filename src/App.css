@@ -48,9 +48,9 @@ a{
 
 :root,
 [data-bs-theme=light] {
-    --bs-primary: #cd2c22 !important;
+    --bs-primary: #00868b !important;
     --bs-primary-bg-subtle: #ffe6e5 !important;
-    --bs-primary-bg-dark: #c4281e !important;
+    --bs-primary-bg-dark: #266688 !important;
     --bs-secondary: #c3d2de !important;
     --bs-secondary-bg-subtle: #dae5ee !important;
     --bs-success: #27a974 !important;
@@ -73,7 +73,7 @@ a{
     --bs-purple: #6363f5 !important;
     --bs-purple-bg-subtle: #dedeff !important;
     --bs-purple-bg-dark: #5b5bed !important;
-    --bs-primary-rgb: 205, 44, 34 !important;
+    --bs-primary-rgb: 0, 134, 139 !important;
     --bs-secondary-rgb: 195, 210, 222 !important;
     --bs-success-rgb: 39, 169, 116 !important;
     --bs-info-rgb: 16, 107, 218 !important;
@@ -522,9 +522,9 @@ h6 {
 }
 
 .btn-primary {
-    background: var(--bs-primary);
-    border-color: var(--bs-primary);
-    color: var(--bs-white)
+    background: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+    color: var(--bs-white) !important
 }
 
 .btn-primary:active,
@@ -3857,9 +3857,6 @@ a.selectCountry.active>div:last-child {
 .nav-menu.nav-menu-social>li.list-buttons.light a {
     background: #fff;color: #031925 !important
 }
-.nav-menu.nav-menu-social>li.list-buttons.light a.bg-danger {
-    color: #fff !important
-}
 .nav-menu.nav-menu-social>li.list-buttons.light a.text-danger {
     color: red !important
 }
@@ -3870,6 +3867,9 @@ a.selectCountry.active>div:last-child {
 
 .header-fixed .nav-menu.nav-menu-social>li.list-buttons.light a {
     color: #041b2d !important
+}
+.nav-menu.nav-menu-social>li.list-buttons.light a.bg-danger {
+    color: #fff !important
 }
 
 .nav-menu.nav-menu-social>li.list-buttons.dark {

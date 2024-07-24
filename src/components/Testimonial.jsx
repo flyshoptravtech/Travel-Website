@@ -30,7 +30,7 @@ const Testimonial = () => {
                             <div className="card-body">
                                 <div className="position-absolute top-0 end-0 mt-3 me-3"><span className="square--40 circle text-primary bg-light-primary"><i className="fa-solid fa-quote-right" /></span></div>
                                 <div className="d-flex align-items-center flex-thumbes">
-                                <div className="revws-pic"><img src={testImg} className="img-fluid rounded-2" width={80} alt />
+                                <div className="revws-pic"><img src={testImg} className="img-fluid rounded-2" width={80} alt="true" />
                                 </div>
                                 <div className="revws-caps ps-3">
                                     <h6 className="fw-bold fs-6 m-0">Aman Diwakar</h6>

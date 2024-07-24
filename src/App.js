@@ -8,13 +8,14 @@ import HotelView from './pages/hotelView/HotelView';
 import Signup from './pages/signup/Signup';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
+import Profile from './pages/profile/Profile';
 
 function App() {
   
   return (
     <div>
       <BrowserRouter>
-      <ToastContainer autoClose={2000} pauseOnHover={false} />
+      <ToastContainer autoClose={2000} pauseOnHover={false} closeOnClick />
         <ScrollTop/>
           <Routes>
             <Route path='/' element={<Main />} />
@@ -22,6 +23,7 @@ function App() {
             <Route path='/hotel-view' element={<HotelView />} />
             <Route path='/sign-up' element={<Signup />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
+            <Route path='/my-profile' element={<Profile />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
       </BrowserRouter>

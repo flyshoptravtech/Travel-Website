@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
@@ -34,8 +34,27 @@ const LoginModal = () => {
         .catch(res=>{console.log(res);})
     }
 
+    const myModalRef = useRef(null);
+    const myInputRef = useRef(null);
+
+    useEffect(() => {
+        const myModal = myModalRef.current;
+        const myInput = myInputRef.current;
+        if (myModal && myInput) {
+            const handleShown = () => {
+                myInput.focus();
+            };
+            myModal.addEventListener('shown.bs.modal', handleShown);
+            return () => {
+                myModal.removeEventListener('shown.bs.modal', handleShown);
+            };
+        }
+    }, []);
+    
+
+
   return (
-    <div className="modal fade" id="login" tabIndex={-1} role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+    <div className="modal fade" id="login" ref={myModalRef} tabIndex={-1} role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered login-pop-form" role="document">
             <div className="modal-content" id="loginmodal">
             <div className="modal-header">
@@ -46,7 +65,7 @@ const LoginModal = () => {
                 <div className="modal-login-form p-md-3 p-0">
                 <form onSubmit={handleLogin}>
                     <div className="form-floating mb-4">
-                    <input type="text" className="form-control" name='username' placeholder="name@example.com" autoComplete='off' required />
+                    <input type="text" className="form-control" name='username' placeholder="name@example.com" autoComplete='off' required id='loginEmail' ref={myInputRef} />
                     <label>Email / Phone Number</label>
                     </div>
                     <div className="form-floating mb-4">

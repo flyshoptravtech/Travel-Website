@@ -18,7 +18,6 @@ const Signup = () => {
         e.preventDefault()
         const form = new FormData(e.target)
         const data = Object.fromEntries(form.entries())
-        // console.log(data);
         axios.post(`${apiUrl}register`,data,axiosHeaders)
         .then(res=>{
             if(res.data.message.email){
@@ -66,11 +65,11 @@ const Signup = () => {
                             <h1 className="mb-2 fs-2">Create New Account</h1>
                             <p className="mb-0">Already a Member?<Link to="/" className="fw-medium text-primary"> Go Home to Login</Link></p>
                             {/* Form START */}
-                            <form className="mt-4 text-start" onSubmit={handleSignup}>
-                            <div className="form py-4">
+                            <form className="mt-3 text-start" onSubmit={handleSignup}>
+                            <div className="form">
                                 <div className="form-group">
                                 <label className="form-label">Enter Email</label>
-                                <input type="email" className="form-control" name='email' placeholder="name@example.com" />
+                                <input type="email" className="form-control" name='email' placeholder="name@example.com" autoFocus />
                                 </div>
                                 <div className="form-group">
                                 <label className="form-label">Enter Mobile Number</label>
