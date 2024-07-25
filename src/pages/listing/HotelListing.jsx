@@ -7,12 +7,11 @@ import { Link, useParams } from 'react-router-dom'
 
 const HotelListing = () => {
 
-    const {goingTo,checkout,checkin,guests} = useParams()
-    const totalGuests = guests.split(" ")
+    const {checkout,checkin} = useParams()
     
   return (
     <Layout>
-        <SearchingBox goingTo={goingTo} checkin={checkin} checkout={checkout} totalGuests={totalGuests} />
+        <SearchingBox checkin={checkin} checkout={checkout} />
         <section className="gray-simple">
             <div className="container">
                 <div className="row justify-content-between gy-4 gx-xl-4 gx-lg-3 gx-md-3 gx-4">

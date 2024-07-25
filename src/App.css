@@ -3891,7 +3891,7 @@ a.selectCountry.active>div:last-child {
 
 .nav-menu.nav-menu-social>li.list-buttons>a {
     display: inline-flex;
-    align-items: center
+    align-items: center;background-color: var(--bs-primary);
 }
 
 .navigation-portrait .nav-dropdown.xxl-menu {

@@ -2,20 +2,25 @@ import { useState } from 'react';
 
 const useGuestCounter = () => {
   const maxNumGuests = 15;
+  const maxRoom = 10;
   const [adultsCount, setAdultsCount] = useState(1);
   const [childrenCount, setChildrenCount] = useState(0);
   const [roomCount, setRoomCount] = useState(0);
 
-  const calcTotalGuests = () => adultsCount + childrenCount + roomCount;
+  const calcTotalGuests = () => adultsCount + childrenCount;
 
-  const addValues = (count, setter) => {
-    if (calcTotalGuests() < maxNumGuests) {
+  const addValues = (count, setter, room) => {
+    if(room === "room" && count < maxRoom){
+      setter(count + 1);
+    }else if (calcTotalGuests() < maxNumGuests) {
       setter(count + 1);
     }
   };
-
-  const subtractValues = (count, min, setter) => {
-    if (count > min) {
+  
+  const subtractValues = (count, min, setter,room) => {
+    if(room === "room" && count < maxRoom){
+      setter(count - 1);
+    }else if (count > min) {
       setter(count - 1);
     }
   };
