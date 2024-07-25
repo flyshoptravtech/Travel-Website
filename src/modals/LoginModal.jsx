@@ -5,10 +5,13 @@ import { toast } from 'react-toastify'
 import CryptoJS from "crypto-js"
 
 const LoginModal = () => {
-
+    
     const apiUrl = process.env.REACT_APP_API_URL
     const secret = process.env.REACT_APP_SECRET_KEY
     const navigate = useNavigate()
+    const myModalRef = useRef(null)
+    const myInputRef = useRef(null)
+    const closeBtn = useRef(null)
 
     const axiosHeaders = {
         headers:{"Content-Type":"application/json",}
@@ -30,7 +33,7 @@ const LoginModal = () => {
                 toast.error(mess.error)
             }else{
                 toast.success(mess)
-                document.getElementById("ModalClosed").click();
+                closeBtn.current.click()
                 localStorage.setItem("authToken",res.data.token)
                 const userinfo = CryptoJS.AES.encrypt(JSON.stringify(res.data.data), secret).toString();
                 localStorage.setItem("userInfo",userinfo)
@@ -43,21 +46,17 @@ const LoginModal = () => {
         .catch(res=>{console.log(res);})
     }
 
-    const myModalRef = useRef(null);
-    const myInputRef = useRef(null);
 
     useEffect(() => {
-        const myModal = myModalRef.current;
-        const myInput = myInputRef.current;
-        if (myModal && myInput) {
-            const handleShown = () => {
-                myInput.focus();
-            };
-            myModal.addEventListener('shown.bs.modal', handleShown);
-            return () => {
-                myModal.removeEventListener('shown.bs.modal', handleShown);
-            };
-        }
+        const myInput = myInputRef.current            
+        const myModal = myModalRef.current        
+        const handleShown = () => {
+            myInput.focus();
+        };
+        myModal.addEventListener('shown.bs.modal', handleShown);
+        return () => {
+            myModal.removeEventListener('shown.bs.modal', handleShown);
+        };
     }, []);
     
 
@@ -68,7 +67,7 @@ const LoginModal = () => {
             <div className="modal-content" id="loginmodal">
             <div className="modal-header">
                 <h4 className="modal-title fs-6">Login / Register</h4>
-                <div className="text-muted fs-4" id='ModalClosed' data-bs-dismiss="modal" aria-label="Close"><i className="fa-solid fa-square-xmark" /></div>
+                <div className="text-muted fs-4" ref={closeBtn} data-bs-dismiss="modal" aria-label="Close"><i className="fa-solid fa-square-xmark" /></div>
             </div>
             <div className="modal-body">
                 <div className="modal-login-form p-md-3 p-0">
