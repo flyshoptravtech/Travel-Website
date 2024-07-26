@@ -31,6 +31,7 @@ const Layout = ({ header, children }) => {
     { name: "Home", path: "/" },
     // { name:"Hotel List", path:"/hotel-list" },
     { name: "Hotel View", path: "/hotel-view" },
+    { name: "Affiliate", path: "/affiliate-signup" },
   ];
 
   useEffect(() => {

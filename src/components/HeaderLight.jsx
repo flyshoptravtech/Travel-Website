@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const HeaderLight = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authToken,userLinks}) => {
   return (
-    <div className={`header header-light ${isFixed ? "header-fixed" : ""}`}>
+    <div className={`header header-light shadow-sm ${isFixed ? "header-fixed" : ""}`}>
         <div className="container">
             <nav id="navigation" className={`navigation navigation-${width >= 993?"landscape":"portrait"}`}>
             <div className="nav-header">
