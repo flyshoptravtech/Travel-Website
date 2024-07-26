@@ -32,7 +32,7 @@ const AffiliateForm = () => {
                                 <input type="number" className="form-control" name='email' placeholder="Youtube Subscriber" autoFocus />
                                 </div>
                                 <div className="form-group">
-                                <label className="form-label">Instagram Link</label>
+                                <label className="form-label">Instagram Link <span style={{fontSize:'12px',fontWeight:"600"}}>( Kindly copy the URL link of your profile from your browser and paste here )</span></label>
                                 <input type="text" className="form-control" name='email' placeholder="https://www.instagram.com/username" autoFocus />
                                 </div>
                                 <div className="form-group">
@@ -40,8 +40,27 @@ const AffiliateForm = () => {
                                 <input type="text" className="form-control" name='email' placeholder="Instaram Followers" autoFocus />
                                 </div>
                                 <div className="form-group">
+                                <label className="form-label">Other Link  <span style={{fontSize:'12px',fontWeight:"600"}}>( Kindly copy the URL link of your profile from your browser and paste here )</span></label>
+                                <input type="text" className="form-control" name='email' placeholder="https://www.other.com/username" autoFocus />
+                                </div>
+                                <div className="form-group">
                                 <label className="form-label">Whatsapp Number*</label>
                                 <input type="number" className="form-control" name='email' placeholder="Enter Number" autoFocus />
+                                </div>
+                                <div className="form-group">
+                                <label className="form-label">Gender</label>
+                                <select className="form-control" name='gender' placeholder="Enter Gender">
+                                    <option value="">Male</option>
+                                    <option value="">Female</option>
+                                </select>
+                                </div>
+                                <div className="form-group">
+                                <label className="form-label">Location <span style={{fontSize:'12px',fontWeight:"600"}}>( City )</span></label>
+                                <input className='form-control' type="text" placeholder='Enter city' name='category' />
+                                </div>
+                                <div className="form-group">
+                                <label className="form-label">Category</label>
+                                <input className='form-control' type="text" placeholder='Enter Category' name='category' />
                                 </div>
                                 <div className="form-group">
                                 <button type="submit" className="btn btn-primary full-width font--bold btn-lg">Submit</button>
