@@ -29,7 +29,7 @@ const Header = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authToken,us
                                 {
                                     userLinks.map((item,index)=>(
                                         <li className='w-100' key={index}>
-                                            <Link className={`d-block h-auto w-100 py-1 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.name}</Link>
+                                            <Link className={`d-block h-auto w-100 py-1 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.logo}{item.name}</Link>
                                         </li>
                                     ))
                                 }
@@ -63,11 +63,11 @@ const Header = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authToken,us
                                 <Link to="#" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className="fa-regular fa-circle-user fs-6 me-2" /> Hii, User
                                 </Link>
-                                <ul className="dropdown-menu dropdown-menu-end">
+                                <ul className="dropdown-menu dropdown-menu-end p-0 overflow-hidden">
                                     {
                                         userLinks.map((item,index)=>(
-                                            <li key={index}>
-                                                <Link className={`w-100 py-1 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.name}</Link>
+                                            <li key={index} className='border-bottom py-1'>
+                                                <Link className={`w-100 px-3 py-2 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.logo}{item.name}</Link>
                                             </li>
                                         ))
                                     }

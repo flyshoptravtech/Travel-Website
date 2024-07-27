@@ -19,8 +19,8 @@ const Layout = ({ header, children }) => {
   };
 
   const userLinks = [
-    { name: "My Profile", link: "/my-profile" },
-    { name: "Logout", link:"#",function: logOut },
+    { name: "My Profile", link: "/my-profile",logo:<i class="fa-regular fa-id-card me-2"></i> },
+    { name: "Logout", link:"#",function: logOut,logo:<i class="fa-solid fa-power-off me-2"></i> },
   ];
 
   const setmobNav = () => {
@@ -32,6 +32,7 @@ const Layout = ({ header, children }) => {
     // { name:"Hotel List", path:"/hotel-list" },
     { name: "Hotel View", path: "/hotel-view" },
     { name: "Affiliate", path: "/affiliate-signup" },
+    { name: "Affiliate-Profile", path: "/affiliate-profile" },
   ];
 
   useEffect(() => {

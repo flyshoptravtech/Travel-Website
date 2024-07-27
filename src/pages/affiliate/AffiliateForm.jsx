@@ -66,11 +66,11 @@ const AffiliateForm = () => {
 
   return (
     <Layout>
-        <section className="py-5">
+        <section className="py-4 py-md-5 gray-simple">
             <div className="container">
                 <div className="row justify-content-center align-items-center m-auto">
                 <div className="col-12">
-                    <div className="bg-mode shadow rounded-3 overflow-hidden">
+                    <div className="bg-white border rounded-3 overflow-hidden">
                     <div className="row g-0">
                         <div className="col-12 order-1">
                         <div className="p-4 p-sm-7">

@@ -12,9 +12,27 @@ const HeaderLight = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authTok
                 <div className="nav-toggle" onClick={setmobNav} />
                 <div className="mobile_nav">
                 <ul>
-                    <li>
-                        <Link to="/" className="bg-light-primary text-primary rounded" data-bs-toggle="modal" data-bs-target="#login"><i className="fa-regular fa-circle-user fs-6" /></Link>
-                    </li>
+                    {
+                        authToken === null ?
+                        <li>
+                            <Link to="#" className="bg-light-primary text-primary rounded" data-bs-toggle="modal" data-bs-target="#login"><i className="fa-regular fa-circle-user fs-6" /></Link>
+                        </li>
+                        :
+                        <li className='dropdown'>
+                            <Link to="#" className="bg-light-primary text-primary rounded" type='button' data-bs-toggle="dropdown" aria-expanded="false">
+                                <i className="fa-regular fa-circle-user fs-6" />
+                            </Link>
+                            <ul className="dropdown-menu dropdown-menu-end">
+                                {
+                                    userLinks.map((item,index)=>(
+                                        <li className='w-100' key={index}>
+                                            <Link className={`d-block h-auto w-100 py-1 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.logo}{item.name}</Link>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 </div>
             </div>
@@ -42,11 +60,11 @@ const HeaderLight = ({navLinks,activeLink,isFixed,width,mobNav,setmobNav,authTok
                                 <Link to="#" className='bg-danger butt' type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i className="fa-regular fa-circle-user fs-6 me-2" /> Hii, User
                                 </Link>
-                                <ul className="dropdown-menu dropdown-menu-end">
+                                <ul className="dropdown-menu dropdown-menu-end p-0 overflow-hidden">
                                     {
                                         userLinks.map((item,index)=>(
-                                            <li key={index}>
-                                                <Link className={`w-100 py-1 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.name}</Link>
+                                            <li key={index} className='border-bottom py-1'>
+                                                <Link className={`w-100 px-3 py-2 ${item.name === "Logout" ? "text-danger" :""}`} to={item.link} style={{whiteSpace:"nowrap"}} onClick={item.function || null} >{item.logo}{item.name}</Link>
                                             </li>
                                         ))
                                     }

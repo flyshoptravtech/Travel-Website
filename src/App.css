@@ -4129,6 +4129,9 @@ a.careerBox {
     width: auto;
     list-style: none
 }
+.user-Dashboard-menu li.active a {
+    color: var(--bs-primary);
+}
 
 .user-Dashboard-menu li a {
     font-weight: 500;
@@ -4152,6 +4155,10 @@ a.careerBox {
     list-style: none
 }
 
+.user-Dashboard-longmenu li.active a {
+    color: var(--bs-primary);
+}
+    
 .segmentDeparture ul:after,
 .segmentDeparture ul:before {
     content: "";
