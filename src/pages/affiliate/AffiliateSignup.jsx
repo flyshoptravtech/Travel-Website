@@ -5,12 +5,12 @@ import Select from "react-select/creatable"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
-import AxiosHeader from '../../helpers/AxiosHeader'
+import options from './assets/CategoryOptions'
+import axiosHeaders from '../../helpers/AxiosHeader'
 
 const AffiliateForm = () => {
 
     const apiUrl = process.env.REACT_APP_API_URL
-    const axiosHeaders = AxiosHeader()
     const islog1 = localStorage.getItem("aff-info")
     const islog2 = localStorage.getItem("aff-token")
     const [inputs, setInputs] = useState({ input1: '', input2: '' });
@@ -24,17 +24,10 @@ const AffiliateForm = () => {
         navigate("/")
       }
     }, [islog1,islog2,navigate])
-    
-
-    const options = [
-        {label:"Youtube",value:"youtube"},
-        {label:"Laura",value:"Jonathan"},
-    ]
 
     const handleChange = (e) => {
         const { id, value } = e.target;
         const regex = /^[0-9]*$/;
-
         if (regex.test(value)) {
             setInputs((prev) => ({ ...prev, [id]: value }));
         }else{

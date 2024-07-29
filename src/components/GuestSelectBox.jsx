@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useGuestCounter from "../pages/assets/addadult";
+import useGuestCounter from "../helpers/addadult";
 import { useParams } from "react-router-dom";
 
 const GuestSelectBox = ({closeBtnRef}) => {

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AxiosHeader from "../../helpers/AxiosHeader";
 import axios from "axios";
 import { toast } from "react-toastify";
+import axiosHeaders from "../../helpers/AxiosHeader";
 
 const ResetPassword = ({id}) => {
 
     const navigate = useNavigate()
     const apiUrl = process.env.REACT_APP_API_URL +"affiliate-change-password/"
-    const axiosHeaders  = AxiosHeader();
     const [togglePass, settogglePass] = useState(false)
     const [loading, setloading] = useState(false)
 
@@ -59,8 +58,10 @@ const ResetPassword = ({id}) => {
               <div className="col-xl-12 col-lg-12 col-md-12">
                 <div className="form-group">
                   <label className="form-label">New Password</label>
-                  <input type={togglePass ? "text" :"password"} className="form-control" name="new_password" placeholder="*********" />
-                  <span className={`toggle-password position-absolute top-50 end-0 translate-middle-y me-5 fa-solid ${togglePass ? "fa-eye-slash" : "fa-eye"}`} onClick={()=>{settogglePass(!togglePass)}} style={{cursor:"pointer"}} />
+                  <div className="position-relative">
+                    <input type={togglePass ? "text" :"password"} className="form-control" name="new_password" placeholder="*********" />
+                    <span className={`toggle-password position-absolute top-50 end-0 translate-middle-y me-4 fa-solid ${togglePass ? "fa-eye-slash" : "fa-eye"}`} onClick={()=>{settogglePass(!togglePass)}} style={{cursor:"pointer"}} />
+                  </div>
                 </div>
               </div>
               <div className="col-xl-12 col-lg-12 col-md-12">

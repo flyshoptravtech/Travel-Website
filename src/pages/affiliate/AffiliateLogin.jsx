@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Layout from "../layout/Layout";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import AxiosHeader from "../../helpers/AxiosHeader";
 import { toast } from "react-toastify";
 import CryptoJS from "crypto-js"
+import axiosHeaders from "../../helpers/AxiosHeader";
 
 const AffiliateLogin = () => {
 
@@ -15,7 +15,6 @@ const AffiliateLogin = () => {
     const navigate = useNavigate()
     const [togglePass, settogglePass] = useState(false)
     const [loading, setloading] = useState(false)
-    const axiosHeaders = AxiosHeader()
 
     const submitLoginAffiliate = (e)=>{
         setloading(true)
@@ -29,7 +28,7 @@ const AffiliateLogin = () => {
             const userinfo = CryptoJS.AES.encrypt(JSON.stringify(res.data.admin), secret).toString();
             localStorage.setItem("aff-token",res.data.token)
             localStorage.setItem("aff-info",userinfo)
-            navigate("/")
+            navigate("/affiliate-profile")
         })
         .catch(err=>{
             setloading(false)
@@ -45,9 +44,9 @@ const AffiliateLogin = () => {
     }
 
     useEffect(() => {
-        if(isLogin1 || isLogin2){
-            navigate("/")
-        }
+      if(isLogin1 || isLogin2){
+        navigate("/")
+      }
     }, [navigate,isLogin1,isLogin2])
     
 

@@ -1,8 +1,5 @@
-const AxiosHeader = () => {
-    const axiosHeaders = {
-        headers:{"Content-Type":"application/json",}
-    }
-    return axiosHeaders;
+const axiosHeaders = {
+    headers:{"Content-Type":"application/json",}
 }
 
-export default AxiosHeader
+export default axiosHeaders;

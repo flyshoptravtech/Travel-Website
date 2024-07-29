@@ -13,7 +13,7 @@ const DashboardHeader = ({profileLinks}) => {
                         {
                             profileLinks.map((item,index)=>(
                                 <li className={`${pathname === item.link ?"active":""}`} key={index}>
-                                    <Link to={item.link}>
+                                    <Link to={item.link} onClick={item.clickF ? item.clickF : null} >
                                         {item.icon}{item.name}
                                     </Link>
                                 </li>
