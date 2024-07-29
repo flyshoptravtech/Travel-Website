@@ -9,8 +9,9 @@ import Signup from './pages/signup/Signup';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import { ToastContainer } from 'react-toastify';
 import Profile from './pages/profile/Profile';
-import AffiliateForm from './pages/affiliate/AffiliateForm';
+import AffiliateForm from './pages/affiliate/AffiliateSignup';
 import AffiliateProfile from './pages/affiliate/AffiliateProfile';
+import AffiliateLogin from './pages/affiliate/AffiliateLogin';
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
             <Route path='/hotel-list/:goingTo/:checkin/:checkout/:guests' element={<HotelListing />} />
             <Route path='/hotel-view' element={<HotelView />} />
             <Route path='/sign-up' element={<Signup />} />
+            <Route path='/affiliate-login' element={<AffiliateLogin />} />
             <Route path='/affiliate-signup' element={<AffiliateForm />} />
             <Route path='/affiliate-profile' element={<AffiliateProfile />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />

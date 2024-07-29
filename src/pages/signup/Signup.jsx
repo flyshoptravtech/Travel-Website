@@ -3,6 +3,7 @@ import loginSvg from "../../assets/img/login.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import AxiosHeader from '../../helpers/AxiosHeader'
 
 const Signup = () => {
 
@@ -10,10 +11,7 @@ const Signup = () => {
     const apiUrl = process.env.REACT_APP_API_URL
     const [togglePass, settogglePass] = useState(false)
     const navigate = useNavigate()
-
-    const axiosHeaders = {
-        headers:{"Content-Type":"application/json",}
-    }
+    const axiosHeaders = AxiosHeader()
 
     const handleSignup = (e)=>{
         e.preventDefault()

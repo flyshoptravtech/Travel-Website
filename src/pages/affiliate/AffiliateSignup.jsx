@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../layout/Layout'
 import animated from "react-select/animated"
 import Select from "react-select/creatable"
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import AxiosHeader from '../../helpers/AxiosHeader'
 
 const AffiliateForm = () => {
 
+    const apiUrl = process.env.REACT_APP_API_URL
+    const axiosHeaders = AxiosHeader()
+    const islog1 = localStorage.getItem("aff-info")
+    const islog2 = localStorage.getItem("aff-token")
     const [inputs, setInputs] = useState({ input1: '', input2: '' });
     const [category, setcategory] = useState("")
     const [loading, setloading] = useState(false)
     const makeAnimated = animated()
-    const apiUrl = process.env.REACT_APP_API_URL
     const navigate = useNavigate()
+
+    useEffect(() => {
+      if(islog1 || islog2){
+        navigate("/")
+      }
+    }, [islog1,islog2,navigate])
+    
 
     const options = [
         {label:"Youtube",value:"youtube"},
         {label:"Laura",value:"Jonathan"},
     ]
-
-    const axiosHeaders = {
-        headers:{"Content-Type":"application/json",}
-    }
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -48,7 +55,7 @@ const AffiliateForm = () => {
         axios.post(`${apiUrl}affiliate-register`,fullData,axiosHeaders)
         .then((res)=>{
             toast.success(res.data.message);
-            navigate("/")
+            navigate("/affiliate-login")
             setloading(false)
         })
         .catch((err)=>{
@@ -74,7 +81,12 @@ const AffiliateForm = () => {
                     <div className="row g-0">
                         <div className="col-12 order-1">
                         <div className="p-4 p-sm-7">
-                            <h1 className="mb-2 fs-2">Join us as Influencer</h1>
+                            <div>
+                                <h1 className="mb-2 fs-2">Join us as Influencer</h1>
+                                <p className="mb-0">Already a Member?
+                                <Link to="/affiliate-login" className="fw-medium text-primary" > Login</Link>
+                                </p>
+                            </div>
                             <form className="mt-3 text-start" onSubmit={affiliateSubmit}>
                             <div className="form">
                                 <div className="form-group">
@@ -113,9 +125,9 @@ const AffiliateForm = () => {
                                     <label className="form-label">Gender</label>
                                     <select className="form-control" name='gender' placeholder="Enter Gender">
                                         <option value="" hidden>Select Gender</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
                                     </select>
                                 </div>
                                 <div className="form-group">

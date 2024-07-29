@@ -3,19 +3,17 @@ import React, { useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import CryptoJS from "crypto-js"
+import AxiosHeader from '../helpers/AxiosHeader'
 
 const LoginModal = () => {
     
     const apiUrl = process.env.REACT_APP_API_URL
     const secret = process.env.REACT_APP_SECRET_KEY
+    const axiosHeaders = AxiosHeader()
     const navigate = useNavigate()
     const myModalRef = useRef(null)
     const myInputRef = useRef(null)
     const closeBtn = useRef(null)
-
-    const axiosHeaders = {
-        headers:{"Content-Type":"application/json",}
-    }
 
     const handleLogin = (e)=>{
         e.preventDefault()

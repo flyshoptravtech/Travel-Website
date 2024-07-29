@@ -6,6 +6,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Layout = ({ header, children }) => {
+
+  const isAff1 = localStorage.getItem("aff-info")
+  const isAff2 = localStorage.getItem("aff-token")
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const [isFixed, setisFixed] = useState(false);
   const [mobNav, setmob_Nav] = useState(false);
@@ -13,14 +16,15 @@ const Layout = ({ header, children }) => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    localStorage.clear();
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userInfo");
     toast.success("Logout Successfully..");
     navigate("/");
   };
 
   const userLinks = [
-    { name: "My Profile", link: "/my-profile",logo:<i class="fa-regular fa-id-card me-2"></i> },
-    { name: "Logout", link:"#",function: logOut,logo:<i class="fa-solid fa-power-off me-2"></i> },
+    { name: "My Profile", link: "/my-profile",logo:<i className="fa-regular fa-id-card me-2"></i> },
+    { name: "Logout", link:"#",function: logOut,logo:<i className="fa-solid fa-power-off me-2"></i> },
   ];
 
   const setmobNav = () => {
@@ -28,11 +32,11 @@ const Layout = ({ header, children }) => {
   };
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    // { name:"Hotel List", path:"/hotel-list" },
     { name: "Hotel View", path: "/hotel-view" },
-    { name: "Affiliate", path: "/affiliate-signup" },
-    { name: "Affiliate-Profile", path: "/affiliate-profile" },
+    { 
+      name: `${isAff1 || isAff2 ? "Affiliate-Profile" : "Affiliate"}`,
+      path: `${isAff1 || isAff2 ? "/affiliate-profile" : "/affiliate-login"}`
+    },
   ];
 
   useEffect(() => {
