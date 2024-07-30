@@ -1,6 +1,5 @@
 import React from 'react'
 import notFoundImg from "../../assets/img/404.png"
-import { Link } from 'react-router-dom'
 
 const NotFound = () => {
   return (
@@ -19,8 +18,7 @@ const NotFound = () => {
                         <div className="404-captions">
                             <h1 className="display-1 fw-bold mb-0">404</h1>
                             <h2>Ohhh ho, something went wrong!</h2>
-                            <p className="fs-6">Cicero famously orated against his political opponent.</p>
-                            <Link to="/" className="btn btn-md btn-primary fw-medium px-lg-4 pt-2">Go Home</Link>
+                            <div to="/" className="btn btn-md btn-primary fw-medium px-lg-4 pt-2" onClick={()=>{window.history.back()}} >Go Back</div>
                         </div>
                     </div>
                 </div>

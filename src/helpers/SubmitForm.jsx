@@ -16,8 +16,10 @@ const SubmitForm = () => {
         const checkoutDate = dateArray[2];
         if (goingTo === "") {
             toast.error("Please select any city...");
-        } else if (checkinDate === "") {
+        } else if (checkinDate.length === 0) {
             toast.error("Please select Date...");
+        } else if(checkoutDate=== undefined){
+            toast.error("Please select checkout Date...");
         } else {
             navigate(`/hotel-list/${goingTo}/${checkinDate}/${checkoutDate}/${guests}`);
         }

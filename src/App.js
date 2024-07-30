@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/hotel-list/:goingTo/:checkin/:checkout/:guests' element={<HotelListing />} />
-            <Route path='/hotel-view' element={<HotelView />} />
+            <Route path='/hotel-view/:id' element={<HotelView />} />
             <Route path='/sign-up' element={<Signup />} />
             <Route path='/affiliate-login' element={<AffiliateLogin />} />
             <Route path='/affiliate-signup' element={<AffiliateForm />} />

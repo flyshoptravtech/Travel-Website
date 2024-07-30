@@ -81,7 +81,7 @@ const GuestSelectBox = ({closeBtnRef}) => {
               <span
                 className="guests-input__ctrl minus"
                 id="room-subs-btn"
-                onClick={() => subtractValues(roomCount, 0, setRoomCount, "room")}
+                onClick={() => subtractValues(roomCount, 1, setRoomCount, "room")}
               >
                 <i className="fa-solid fa-minus" />
               </span>

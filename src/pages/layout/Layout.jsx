@@ -4,14 +4,16 @@ import Footer from "../../components/Footer/Footer";
 import HeaderLight from "../../components/HeaderLight";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import LoadingBar from "react-top-loading-bar";
 
-const Layout = ({ header, children }) => {
+const Layout = ({ header, children, progressBar }) => {
 
   const isAff1 = localStorage.getItem("aff-info")
   const isAff2 = localStorage.getItem("aff-token")
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   const [isFixed, setisFixed] = useState(false);
   const [mobNav, setmob_Nav] = useState(false);
+  const [progess, setprogess] = useState(0)
   const authToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
 
@@ -32,12 +34,16 @@ const Layout = ({ header, children }) => {
   };
 
   const navLinks = [
-    { name: "Hotel View", path: "/hotel-view" },
     { 
       name: `${isAff1 || isAff2 ? "Affiliate-Profile" : "Affiliate"}`,
       path: `${isAff1 || isAff2 ? "/affiliate-profile" : "/affiliate-login"}`
     },
   ];
+
+  useEffect(() => {
+    setprogess(progressBar)
+  }, [progressBar])
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +68,7 @@ const Layout = ({ header, children }) => {
 
   return (
     <div>
+      <LoadingBar color="red" height={3} progress={progess} onLoaderFinished={()=>{setprogess(0)}} />
       {header === "light" ? (
         <Header
           navLinks={navLinks}

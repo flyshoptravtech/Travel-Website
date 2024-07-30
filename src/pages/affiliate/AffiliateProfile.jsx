@@ -35,7 +35,7 @@ const AffiliateProfile = () => {
     }else{
         return;
     }
-    console.log(userInfo);
+    // console.log(userInfo);
     
     const handleChange = (e) => {
         const { id, value } = e.target;
