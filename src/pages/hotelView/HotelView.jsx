@@ -7,6 +7,7 @@ import axios from 'axios';
 import axiosHeaders from '../../helpers/AxiosHeader';
 import ViewSkeleton from '../../skeleton/ViewSkeleton';
 import NotFound from '../notfound/NotFound';
+import { Carousel } from 'react-responsive-carousel';
 
 const HotelView = () => {
 
@@ -14,14 +15,28 @@ const HotelView = () => {
     const [hotelData, setHotelData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const [progressBar, setProgressBar] = useState(0);
 
     const apiUrl = `${process.env.REACT_APP_API_URL}hotel-details/${id}`;
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        autoplay: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
     useEffect(() => {
+        setProgressBar(20)
         axios.get(apiUrl, axiosHeaders)
             .then(res => {
+                setProgressBar(40)
                 setHotelData(res.data.data);
+                setProgressBar(60)
                 setLoading(false);
+                setProgressBar(100)
             })
             .catch(()=> {
                 setError(true);
@@ -30,7 +45,7 @@ const HotelView = () => {
     }, [apiUrl]);
 
   return (
-    <Layout>
+    <Layout progressBar={progressBar} >
         <section className="pt-3 gray-simple">
             <div className="container">
                 {
@@ -41,7 +56,7 @@ const HotelView = () => {
                         <ViewSkeleton /> :
                         <div className="row">
                         <div className="col-xl-12 col-lg-12 col-md-12">
-                            <div className="card border-0 p-3 mb-4">
+                            <div className="card border-0 p-3 pb-5 mb-4">
                             <div className="crd-heaader d-md-flex align-items-center justify-content-between">
                                 <div className="crd-heaader-first">
                                 <div className="d-inline-flex align-items-center mb-1">
@@ -61,35 +76,16 @@ const HotelView = () => {
                                     </div>
                                 </div>
                                 </div>
-                                <div className="crd-heaader-last my-md-0 my-2">
-                                <div className="drix-wrap d-flex align-items-center">
-                                    <div className="drix-first pe-2">
-                                    <div className="text-dark fw-semibold fs-4">US$107</div>
-                                    <div className="d-flex align-items-center justify-content-start justify-content-md-end">
-                                        <span className="label bg-success text-light">15% Off</span>
-                                    </div>
-                                    </div>
-                                    <div className="drix-last">
-                                    <button type="button" className="btn btn-primary fw-semibold">Select Rooms</button>
-                                    </div>
-                                </div>
-                                </div>
                             </div>
-                            <div className="galleryGrid typeGrid_3 mt-2">
-                                {
-                                    Array(6).fill(null).map((i,index)=>(
-                                        <div key={index} className="galleryGrid__item relative d-flex">
-                                            <Link to="#" data-lightbox="roadtrip"><img src={hotelImg} alt="true" className="rounded-2 img-fluid" /></Link>
-                                        </div>
-                                    ))
-                                }
-                                <div className="galleryGrid__item position-relative">
-                                <Link to="#" data-lightbox="roadtrip"><img src={hotelImg} alt="true" className="rounded-2 img-fluid" /></Link>
-                                <div className="position-absolute end-0 bottom-0 mb-3 me-3">
-                                    <Link to="#" data-lightbox="roadtrip" className="btn btn-md btn-whites fw-medium text-dark"><i className="fa-solid fa-caret-right me-1" />16
-                                    More Photos</Link>
-                                </div>
-                                </div>
+                            <div className="mt-2">
+                                <Carousel {...settings} >
+                                    <div>
+                                        <img src={hotelImg} alt="loading...." loading='lazy' />
+                                    </div>
+                                    <div>
+                                        <img src={hotelImg} alt="loading...." loading='lazy' />
+                                    </div>
+                                </Carousel>
                             </div>
                             </div>
                         </div>

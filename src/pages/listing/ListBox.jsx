@@ -2,12 +2,8 @@ import React from "react";
 import hotelImg from "../../assets/img/hotel/hotel-1.jpg"
 import { Link } from "react-router-dom";
 import NoDataFound from "./NoDataFound";
-import CryptoJS from "crypto-js";
 
 const ListBox = ({searchResults}) => {
-
-  const secret = process.env.REACT_APP_SECRET_KEY
-
   return (
     <>
       {

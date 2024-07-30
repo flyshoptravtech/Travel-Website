@@ -68,7 +68,7 @@ const Layout = ({ header, children, progressBar }) => {
 
   return (
     <div>
-      <LoadingBar color="red" height={3} progress={progess} onLoaderFinished={()=>{setprogess(0)}} />
+      <LoadingBar color="#00868b" height={4} progress={progess} onLoaderFinished={()=>{setprogess(0)}} />
       {header === "light" ? (
         <Header
           navLinks={navLinks}

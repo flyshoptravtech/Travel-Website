@@ -3,7 +3,7 @@ import Layout from '../layout/Layout';
 import SearchingBox from '../../components/SearchingBox';
 import ListBox from './ListBox';
 import Sidebar from './Sidebar';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import axiosHeaders from '../../helpers/AxiosHeader';
 import ListSkeleton from '../../skeleton/ListSkeleton';
