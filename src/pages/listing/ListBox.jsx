@@ -1,5 +1,5 @@
 import React from "react";
-import hotelImg from "../../assets/img/hotel/hotel-1.jpg"
+import noImg from "../../assets/img/noImages.png"
 import { Link } from "react-router-dom";
 import NoDataFound from "./NoDataFound";
 
@@ -17,15 +17,25 @@ const ListBox = ({searchResults}) => {
                 <div className="col-xl-4 col-lg-3 col-md">
                   <div className="cardImage__caps rounded-2 overflow-hidden h-100">
                     <img
-                      className="img-fluid h-100 object-fit"
-                      src={hotelImg}
+                      className="img-fluid w-100 object-fit"
+                      src={item.image === null ? noImg : item.image.image_path }
                       alt="hotel"
+                      style={{height:"206px"}}
                     />
                   </div>
                 </div>
                 <div className="col-xl col-lg col-md">
                   <div className="listLayout_midCaps mt-md-0 mt-3 mb-md-0 mb-3">
-                    <div className="d-flex align-items-center justify-content-start">
+                    <h4 className="fs-5 fw-bold mb-1">{item.property_name}</h4>
+                    <ul className="row gx-2 p-0 excortio mb-0">
+                      <li className="col-auto">
+                        <p className="text-muted-2 text-md mb-0">{item.property_address},</p>
+                      </li>
+                      <li className="col-auto">
+                        <p className="text-muted-2 text-md mb-0">{item.property_country}</p>
+                      </li>
+                    </ul>
+                    <div className="d-flex align-items-center justify-content-start mb-4">
                       <div className="d-inline-block">
                         {
                           Array(item.rating).fill(null).map((_,index)=>(
@@ -34,17 +44,6 @@ const ListBox = ({searchResults}) => {
                         }
                       </div>
                     </div>
-                    <h4 className="fs-5 fw-bold mb-1">{item.property_name}</h4>
-                    <ul className="row gx-2 p-0 excortio">
-                      <li className="col-auto">
-                        <p className="text-muted-2 text-md">{item.property_address},</p>
-                      </li>
-                      <li className="col-auto">
-                        <p className="text-muted-2 text-md">
-                          {item.property_country}
-                        </p>
-                      </li>
-                    </ul>
                     <div className="detail ellipsis-container mt-3">
                       <span className="ellipsis">Parking</span>
                       <span className="ellipsis">WiFi</span>
