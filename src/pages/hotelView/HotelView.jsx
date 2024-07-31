@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../layout/Layout'
-import hotelImg from "../../assets/img/hotel/hotel-1.jpg";
+import noImgFound from "../../assets/img/noImgFound.png"
 import roomImg from "../../assets/img/hotel/hotel-10.jpg";
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -41,6 +41,7 @@ const HotelView = () => {
             .catch(()=> {
                 setError(true);
                 setLoading(false);
+                setProgressBar(100)
             });
     }, [apiUrl]);
 
@@ -79,12 +80,17 @@ const HotelView = () => {
                             </div>
                             <div className="mt-2">
                                 <Carousel {...settings} >
-                                    <div>
-                                        <img src={hotelImg} alt="loading...." loading='lazy' />
-                                    </div>
-                                    <div>
-                                        <img src={hotelImg} alt="loading...." loading='lazy' />
-                                    </div>
+                                    {
+                                        hotelData.gallery.length === 0 ?
+                                        <div>
+                                            <img src={noImgFound} alt="noImageFound" loading='lazy' />
+                                        </div>:
+                                        hotelData.gallery.map((item,index)=>(
+                                            <div key={index}>
+                                                <img src={item.image_path} alt="loading...." loading='lazy' />
+                                            </div>
+                                        ))
+                                    }
                                 </Carousel>
                             </div>
                             </div>
