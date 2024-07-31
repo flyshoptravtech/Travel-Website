@@ -9,6 +9,7 @@ import 'flatpickr/dist/flatpickr'
 import 'react-toastify/ReactToastify.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-multi-carousel/lib/styles.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

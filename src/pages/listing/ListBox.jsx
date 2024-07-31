@@ -84,7 +84,7 @@ const ListBox = ({searchResults}) => {
                     </div>
                     <div className="d-flex align-items-start align-items-md-end text-start text-md-end flex-column">
                       <Link
-                        to={`/hotel-view/${item.id}`}
+                        to={`/hotel-view/${item.id}`} target="_"
                         className="btn btn-md btn-primary full-width fw-medium px-lg-4 pt-2"
                       >
                         See Details

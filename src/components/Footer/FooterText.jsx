@@ -99,15 +99,8 @@ const FooterText = () => {
         <div className="footer-bottom border-top">
             <div className="container">
             <div className="row align-items-center justify-content-between">
-                <div className="col-xl-6 col-lg-6 col-md-6">
-                <p className="mb-0">© {new Date().getFullYear()} GeoTrip Design by Flyshop.</p>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6">
-                <ul className="p-0 d-flex justify-content-start justify-content-md-end text-start text-md-end m-0">
-                    <li><Link to="#">Terms of services</Link></li>
-                    <li className="ms-3"><Link to="#">Privacy Policies</Link></li>
-                    <li className="ms-3"><Link to="#">Cookies</Link></li>
-                </ul>
+                <div className="col-12">
+                    <p className="mb-0">© {new Date().getFullYear()} Demo Website Design by Flyshop.</p>
                 </div>
             </div>
             </div>

@@ -1,18 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import testImg from "../assets/img/team-1.jpg"
-import reviewBg from "../assets/img/reviewbg.png"
+import Caraousel from './Caraousel';
 
 const Testimonial = () => {
-    const testiBackground = useRef(null);
-
-  useEffect(() => {
-    if (testiBackground.current) {
-      testiBackground.current.style.setProperty('background', `url(${reviewBg}) no-repeat`, 'important');
-    }
-  }, []);
-
   return (
-    <section className="gray-simple bg-cover" ref={testiBackground}>
+    <section className="gray-simple bg-cover" >
         <div className="container">
             <div className="row align-items-center justify-content-center">
             <div className="col-xl-8 col-lg-9 col-md-11 col-sm-12">
@@ -22,10 +14,10 @@ const Testimonial = () => {
                 </div>
             </div>
             </div>
-            <div className="row align-items-center justify-content-center g-xl-4 g-lg-4 g-md-4 g-3">
+            <Caraousel>
                 {
-                    Array(3).fill(null).map((i,index)=>(
-                        <div key={index} className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                    Array(3).fill(null).map((_,index)=>(
+                        <div key={index} className="col-12 p-2">
                             <div className="card border rounded-3">
                             <div className="card-body">
                                 <div className="position-absolute top-0 end-0 mt-3 me-3"><span className="square--40 circle text-primary bg-light-primary"><i className="fa-solid fa-quote-right" /></span></div>
@@ -52,7 +44,7 @@ const Testimonial = () => {
                         </div>
                     ))
                 }
-            </div>
+            </Caraousel>
         </div>
     </section>
 

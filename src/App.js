@@ -12,6 +12,8 @@ import Profile from './pages/profile/Profile';
 import AffiliateForm from './pages/affiliate/AffiliateSignup';
 import AffiliateProfile from './pages/affiliate/AffiliateProfile';
 import AffiliateLogin from './pages/affiliate/AffiliateLogin';
+import BookingPage from './pages/booking/BookingPage';
+import SuccessPage from './pages/booking/SuccessPage';
 
 function App() {
   
@@ -24,6 +26,8 @@ function App() {
             <Route path='/' element={<Main />} />
             <Route path='/hotel-list/:goingTo/:checkin/:checkout/:guests' element={<HotelListing />} />
             <Route path='/hotel-view/:id' element={<HotelView />} />
+            <Route path='/booking-page/:id' element={<BookingPage />} />
+            <Route path='/success-page' element={<SuccessPage />} />
             <Route path='/sign-up' element={<Signup />} />
             <Route path='/affiliate-login' element={<AffiliateLogin />} />
             <Route path='/affiliate-signup' element={<AffiliateForm />} />

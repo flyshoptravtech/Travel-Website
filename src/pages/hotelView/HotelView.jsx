@@ -113,7 +113,7 @@ const HotelView = () => {
                                                     {
                                                         item.room_amenties.map((item,index)=>(
                                                             <li className="col-6" key={index} >
-                                                                <span className="text-muted-2 text-md"><i class="fa-solid fa-circle-arrow-right"></i> {item}</span>
+                                                                <span className="text-muted-2 text-md"><i className="fa-solid fa-circle-arrow-right"></i> {item}</span>
                                                             </li>
                                                         ))
                                                     }
@@ -152,9 +152,7 @@ const HotelView = () => {
                                                     </div>
                                                 </div>
                                                 <div className="prcrounce-groups-button d-flex flex-column align-items-start align-items-md-end mt-3">
-                                                    <div className="prcrounce-sngbuttons d-flex mb-2"><button className="btn btn-sm btn-light-primary rounded-1 fw-medium px-4">Book at This
-                                                        Price</button></div>
-                                                    <div className="prcrounce-sngbuttons d-flex"><button className="btn btn-sm btn-primary rounded-1 fw-medium px-4">Book Now</button>
+                                                    <div className="prcrounce-sngbuttons d-flex"><Link to={`/booking-page/${item.id}`} className="btn btn-sm btn-primary rounded-1 fw-medium px-4">Book Now</Link>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -169,7 +167,6 @@ const HotelView = () => {
                         </div>
                         </div> 
                     )
-                      
                 }
             </div>
         </section>
