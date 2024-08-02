@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AsyncSelect from "react-select/async"
+import axiosHeaders from "../helpers/AxiosHeader";
 
 const SearchInputBox = () => {
 
   const {goingTo} = useParams()
-  const [city, setCity] = useState("")
+  const [city, setCity] = useState("Delhi")
   const [CityOptions, setCityOptions] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -34,10 +35,6 @@ const SearchInputBox = () => {
     }),
   }
   
-  const axiosHeaders = {
-    headers:{"Content-Type":"application/json",}
-  }
-  
   useEffect(() => {
     axios.get(`${apiUrl}cities`, axiosHeaders)
     .then((response) => {
@@ -50,6 +47,9 @@ const SearchInputBox = () => {
         if (goingTo) {
           const selectedCity = cityOp.find((option) => option.value === goingTo);
           setCity(selectedCity || "");
+        }else{
+          const defaultCity = cityOp.find((option) => option.label === "Delhi");
+          setCity(defaultCity)
         }
     })
     .catch((error) => {

@@ -10,11 +10,19 @@ import 'react-toastify/ReactToastify.css'
 import 'react-loading-skeleton/dist/skeleton.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-multi-carousel/lib/styles.css"
+import 'ion-rangeslider/css/ion.rangeSlider.css'
+import 'ion-rangeslider/js/ion.rangeSlider'
+import { HotelProvider } from './context/hotelContext';
+import { FilterProvider } from './context/filterContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <HotelProvider>
+      <FilterProvider>
+        <App />
+      </FilterProvider>
+    </HotelProvider>
   </React.StrictMode>
 );
 

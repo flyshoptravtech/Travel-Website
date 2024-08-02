@@ -45,6 +45,24 @@ const HotelView = () => {
             });
     }, [apiUrl]);
 
+    const sortProperties = () => {
+        if(hotelData){
+            const properties = hotelData.properties;
+            function getSortKey(property) {
+                const priceInfo = property.price;
+                if (priceInfo.longweek_end_price > 0) {
+                    return priceInfo.longweek_end_price;
+                } else if (priceInfo.black_out_date_price > 0) {
+                    return priceInfo.black_out_date_price;
+                } else {
+                    return priceInfo.room_price;
+                }
+            }
+            properties.sort((a, b) => getSortKey(a) - getSortKey(b));
+            return properties;
+        }
+    }
+
   return (
     <Layout progressBar={progressBar} >
         <section className="pt-3 gray-simple">
@@ -97,7 +115,7 @@ const HotelView = () => {
                         </div>
                         <div className="col-xl-12 col-lg-12 col-md-12">
                             {
-                                hotelData.properties.map((item,index)=>(
+                                sortProperties().map((item,index)=>(
                                     <div key={index} className="card mb-4">
                                     <div className="card-header">
                                         <h6 className="fw-semibold mb-0">{item.room_type}</h6>
@@ -137,13 +155,15 @@ const HotelView = () => {
                                                 </div>
                                                 <div className="typsofrooms-groups d-flex align-items-start">
                                                     <div className="typsofrooms-brk1 mb-4">
-                                                    <ul className="row align-items-center g-1 mb-0 p-0">
-                                                        <li className="col-12"><span className="text-muted-2 text-md"><i className="fa-solid fa-mug-saucer me-2" />Breackfast for US$10 (Optional)</span>
-                                                        </li>
-                                                        <li className="col-12"><span className="text-muted-2 text-md"><i className="fa-solid fa-ban-smoking me-2" />Non-Refundable</span></li>
-                                                        <li className="col-12"><span className="text-success text-md"><i className="fa-solid fa-meteor me-2" />Instant Confirmation</span></li>
-                                                        <li className="col-12"><span className="text-muted-2 text-md"><i className="fa-brands fa-cc-visa me-2" />Prepay Online</span></li>
-                                                        <li className="col-12"><span className="text-success text-md"><i className="fa-solid fa-circle-check me-2" />Booking of Maximum 5 Rooms</span></li>
+                                                    <ul className="row align-items-center g-1 mb-0 p-0 mt-2">
+                                                        {
+                                                            item.price.no_of_person_allowed &&
+                                                                <li className="col-12"><span className="text-muted-2 text-md"><i className="fa-solid fa-user-group me-2" />Number of person allowed {item.price.no_of_person_allowed}</span></li>
+                                                        }
+                                                        {
+                                                            item.price.extra_bed_charge &&
+                                                                <li className="col-12"><span className="text-muted-2 text-md"><i className="fa-solid fa-bed me-2" />Charge for Extra Bed is ₹{item.price.extra_bed_charge}</span></li>
+                                                        }
                                                     </ul>
                                                     </div>
                                                 </div>
@@ -151,14 +171,11 @@ const HotelView = () => {
                                                 <div className="typsofrooms-action col-auto">
                                                 <div className="prcrounce-groups">
                                                     <div className="d-flex align-items-center justify-content-start justify-content-sm-end">
-                                                    <div className="text-dark fw-semibold fs-4">US$ 99</div>
-                                                    </div>
-                                                    <div className="d-flex align-items-start align-items-sm-end justify-content-start justify-content-md-end flex-column mb-2">
-                                                    <div className="text-muted-2 text-sm">After tax US$ 102</div>
+                                                    <div className="text-dark fw-semibold fs-4">INR ₹{item.price.longweek_end_price != 0 ? item.price.longweek_end_price : (item.price.black_out_date_price != 0 ? item.price.black_out_date_price : item.price.room_price)}</div>
                                                     </div>
                                                 </div>
                                                 <div className="prcrounce-groups-button d-flex flex-column align-items-start align-items-md-end mt-3">
-                                                    <div className="prcrounce-sngbuttons d-flex"><Link to={`/booking-page/${item.id}`} className="btn btn-sm btn-primary rounded-1 fw-medium px-4">Book Now</Link>
+                                                    <div className="prcrounce-sngbuttons d-flex"><Link to={`/booking-page/${item.price._id}`} className="btn btn-sm btn-primary rounded-1 fw-medium px-4">Book Now</Link>
                                                     </div>
                                                 </div>
                                                 </div>

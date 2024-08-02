@@ -15,6 +15,7 @@ const Form = () => {
             mode: "range",
             minDate: "today",
             dateFormat: "Y-m-d",
+            defaultDate: [new Date(), new Date().fp_incr(1)]
         });
     }, []);
 

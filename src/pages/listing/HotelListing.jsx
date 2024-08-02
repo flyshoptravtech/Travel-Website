@@ -4,19 +4,17 @@ import SearchingBox from '../../components/SearchingBox';
 import ListBox from './ListBox';
 import Sidebar from './Sidebar';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import axiosHeaders from '../../helpers/AxiosHeader';
 import ListSkeleton from '../../skeleton/ListSkeleton';
+import { useHotelContext } from '../../context/hotelContext';
+import { useFilterContext } from '../../context/filterContext';
 
 const HotelListing = () => {
     
-    const apiUrl = `${process.env.REACT_APP_API_URL}hotel-search`;
     const { goingTo, checkout, checkin, guests } = useParams();
     const [totalGuest, setTotalGuest] = useState({ adult: 0, child: 0, room: 0 });
-    const [progressBar, setProgressBar] = useState(0);
-    const [loading, setLoading] = useState(true);
-    const [searchResults, setSearchResults] = useState([]);
     const [searchParams, setSearchParams] = useState({});
+    const { handleHotelSearch,loading,progressBar} = useHotelContext()
+    const {filter_products} = useFilterContext()
 
     useEffect(() => {
         if (guests) {
@@ -41,21 +39,9 @@ const HotelListing = () => {
 
     useEffect(() => {
         if (Object.keys(searchParams).length > 0) {
-            setLoading(true);
-            setProgressBar(20);
-
-            axios.get(apiUrl, { params: searchParams, headers: axiosHeaders })
-                .then((res) => {
-                    setProgressBar(50);
-                    setSearchResults(res.data.data);
-                    setLoading(false);
-                    setProgressBar(100);
-                })
-                .catch(() => {
-                    setLoading(false);
-                });
+            handleHotelSearch(searchParams)
         }
-    }, [apiUrl, searchParams]);
+    }, [searchParams,handleHotelSearch]);
 
     return (
         <Layout progressBar={progressBar}>
@@ -63,11 +49,11 @@ const HotelListing = () => {
             <section className="gray-simple">
                 <div className="container">
                     <div className="row justify-content-between gy-4 gx-xl-4 gx-lg-3 gx-md-3 gx-4">
-                        <Sidebar />
+                        <Sidebar searchNo={filter_products.length} />
                         <div className="col-xl-9 col-lg-8 col-md-12">
                             <div className="row align-items-center justify-content-between">
                                 <div className="col-xl-4 col-lg-4 col-md-4">
-                                    <h5 className="fw-bold fs-6 mb-lg-0 mb-3">Showing {searchResults.length} Search Results</h5>
+                                    <h5 className="fw-bold fs-6 mb-lg-0 mb-3">Showing {filter_products.length} Search Results</h5>
                                 </div>
                                 <div className="col-xl-8 col-lg-8 col-md-12">
                                     <div className="d-flex align-items-center justify-content-start justify-content-lg-end flex-wrap">
@@ -90,7 +76,7 @@ const HotelListing = () => {
                             <div className="row align-items-center g-4 mt-2">
                                 {
                                     !loading ?
-                                        <ListBox searchResults={searchResults} /> :
+                                        <ListBox searchResults={filter_products} /> :
                                         <ListSkeleton />
                                 }
 

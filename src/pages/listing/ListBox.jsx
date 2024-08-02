@@ -72,14 +72,11 @@ const ListBox = ({searchResults}) => {
                     </div>
                   </div>
                   <div className="position-relative mt-auto full-width">
-                    {/* <div className="d-flex align-items-center justify-content-start justify-content-md-end mb-1">
-                      <span className="label bg-success text-light">15% Off</span>
-                    </div> */}
                     <div className="d-flex align-items-center justify-content-start justify-content-md-end">
                       <div className="text-muted-2 fw-medium text-decoration-line-through me-2">
-                        US$79
+                        INR ₹{item.price + 999}
                       </div>
-                      <div className="text-dark fw-bold fs-3">$59</div>
+                      <div className="text-dark fw-bold fs-3">₹{item.price}</div>
                     </div>
                     <div className="d-flex align-items-start align-items-md-end text-start text-md-end flex-column">
                       <Link
@@ -87,7 +84,6 @@ const ListBox = ({searchResults}) => {
                         className="btn btn-md btn-primary full-width fw-medium px-lg-4 pt-2"
                       >
                         See Details
-                        <i className="fa-solid fa-arrow-trend-up ms-2" />
                       </Link>
                     </div>
                   </div>
