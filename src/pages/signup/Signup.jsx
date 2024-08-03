@@ -3,7 +3,7 @@ import loginSvg from "../../assets/img/login.svg"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import AxiosHeader from '../../helpers/AxiosHeader'
+import axiosHeaders from '../../helpers/AxiosHeader'
 
 const Signup = () => {
 
@@ -11,7 +11,6 @@ const Signup = () => {
     const apiUrl = process.env.REACT_APP_API_URL
     const [togglePass, settogglePass] = useState(false)
     const navigate = useNavigate()
-    const axiosHeaders = AxiosHeader()
 
     const handleSignup = (e)=>{
         e.preventDefault()
@@ -19,19 +18,15 @@ const Signup = () => {
         const data = Object.fromEntries(form.entries())
         axios.post(`${apiUrl}register`,data,axiosHeaders)
         .then(res=>{
-            if(res.data.message.email){
-                toast.error(res.data.message.email[0])
-            }else if(res.data.message.mobile){
-                toast.error(res.data.message.mobile[0])
-            }else if(res.data.message.password){
-                toast.error(res.data.message.password[0])
-            }else if(res.data.message.confirm_password){
-                toast.error(res.data.message.confirm_password[0])
-            }else{
-                toast.success(`${res.data.message} and You can Login`)
-                navigate("/")
+            if (res.data.message) {
+                const errorField = Object.keys(res.data.message)[0];
+                if (errorField) {
+                  toast.error(res.data.message[errorField][0]);
+                } else {
+                  toast.success(`${res.data.message} and You can Login`);
+                  navigate("/");
+                }
             }
-            console.log(res.data);
         })
         .catch(res=>{
             console.log(res);

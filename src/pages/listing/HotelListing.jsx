@@ -76,7 +76,7 @@ const HotelListing = () => {
                             <div className="row align-items-center g-4 mt-2">
                                 {
                                     !loading ?
-                                        <ListBox searchResults={filter_products} /> :
+                                        <ListBox searchResults={filter_products} checkin={checkin} checkout={checkout} /> :
                                         <ListSkeleton />
                                 }
 

@@ -3,7 +3,7 @@ import noImg from "../../assets/img/noImages.png"
 import { Link } from "react-router-dom";
 import NoDataFound from "./NoDataFound";
 
-const ListBox = ({searchResults}) => {
+const ListBox = ({searchResults,checkin,checkout}) => {
   return (
     <>
       {
@@ -80,7 +80,7 @@ const ListBox = ({searchResults}) => {
                     </div>
                     <div className="d-flex align-items-start align-items-md-end text-start text-md-end flex-column">
                       <Link
-                        to={`/hotel-view/${item.id}`} target="_"
+                        to={`/hotel-view/${item.id}/${checkin}/${checkout}`} target="_"
                         className="btn btn-md btn-primary full-width fw-medium px-lg-4 pt-2"
                       >
                         See Details

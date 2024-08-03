@@ -12,14 +12,14 @@ import options from './assets/CategoryOptions'
 const AffiliateProfile = () => {
 
     const navigate = useNavigate()
-    const apiUrl = process.env.REACT_APP_API_URL
+    // const apiUrl = process.env.REACT_APP_API_URL
     const secret = process.env.REACT_APP_SECRET_KEY
     const [isEditable, setisEditable] = useState(true)
     const [inputs, setInputs] = useState({ input1: '', input2: '' });
     const islog1 = localStorage.getItem("aff-info")
-    const [category, setcategory] = useState("")
-    const makeAnimated = animated()
     const islog2 = localStorage.getItem("aff-token")
+    // const [category, setcategory] = useState("")
+    const makeAnimated = animated()
 
     useEffect(() => {
         if(islog1 || islog2){}
@@ -35,7 +35,6 @@ const AffiliateProfile = () => {
     }else{
         return;
     }
-    // console.log(userInfo);
     
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -47,24 +46,6 @@ const AffiliateProfile = () => {
         }
     }
 
-    const affLogOut = () =>{
-        toast.success("Logout Sucessfully..")
-        localStorage.removeItem("aff-info")
-        localStorage.removeItem("aff-token");
-        navigate("/")
-    }
-
-    const profileLinks = [
-        {name:"My Profile",link:"#",icon:<i className="fa-regular fa-id-card me-2" />},
-        {name:"My Booking",link:"#",icon:<i className="fa-solid fa-ticket me-2" />},
-        {name:"Travelers",link:"#",icon:<i className="fa-solid fa-user-group me-2" />},
-        {name:"Payment Details",link:"#",icon:<i className="fa-solid fa-wallet me-2" />},
-        {name:"My Wishlist",link:"#",icon:<i className="fa-solid fa-shield-heart me-2" />},
-        {name:"Settings",link:"#",icon:<i className="fa-solid fa-sliders me-2" />},
-        {name:"Delete Profile",link:"#",icon: <i className="fa-solid fa-trash-can me-2" />},
-        {name:"Sign Out",link:"#",icon:<i className="fa-solid fa-power-off me-2" />,clickF:affLogOut},
-    ]
-
     const toggleEdit = ()=>{
         setisEditable(!isEditable)
         toast.success("Your can now edit the information !!")
@@ -72,10 +53,10 @@ const AffiliateProfile = () => {
 
   return (
     <Layout>
-        <DashboardHeader profileLinks={profileLinks} />
+        <DashboardHeader />
         <section className="pt-5 gray-simple position-relative">
             <div className="container">
-                <DashboardMobile profileLinks={profileLinks} />
+                <DashboardMobile />
                 <div className="row align-items-start justify-content-between gx-xl-4">
                 <div className="col-12">
                     <div className="card mb-4">
@@ -159,7 +140,7 @@ const AffiliateProfile = () => {
                                     components={makeAnimated} 
                                     options={options} 
                                     isMulti 
-                                    onChange={(e)=>setcategory(e)} 
+                                    // onChange={(e)=>setcategory(e)} 
                                     styles={{control:(base)=>({
                                             ...base,height:"fit-content",padding:".375rem .2rem",border:"1px solid #dee2e6",
                                     })}}

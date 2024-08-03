@@ -1,8 +1,25 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-const DashboardHeader = ({profileLinks}) => {
+const profileLinks = [
+    {name:"My Profile",link:"/affiliate-profile",icon:<i className="fa-regular fa-id-card me-2" />},
+    {name:"My Homestay",link:"/affiliate-homestay",icon:<i className="fa-solid fa-ticket me-2" />},
+    {name:"Add Homestay",link:"/add-homestay-affiliate",icon:<i className="fa-solid fa-ticket me-2" />},
+    {name:"Sign Out",link:"#",icon:<i className="fa-solid fa-power-off me-2" />},
+]
+
+const DashboardHeader = () => {
     const {pathname} = useLocation();
+    const navigate = useNavigate()
+
+    const logOut = () =>{
+        toast.success("Logout Sucessfully..")
+        localStorage.removeItem("aff-info")
+        localStorage.removeItem("aff-token");
+        navigate("/");
+    }
+
     return (
         <div>
         <div className="dashboard-menus border-top d-none d-lg-block">
@@ -12,8 +29,8 @@ const DashboardHeader = ({profileLinks}) => {
                     <ul className="user-Dashboard-menu">
                         {
                             profileLinks.map((item,index)=>(
-                                <li className={`${pathname === item.link ?"active":""}`} key={index}>
-                                    <Link to={item.link} onClick={item.clickF ? item.clickF : null} >
+                                <li className={`${pathname === item.link ? "active":""}`} key={index}>
+                                    <Link to={item.link} onClick={item.name === "Sign Out" ? logOut : null} >
                                         {item.icon}{item.name}
                                     </Link>
                                 </li>
@@ -28,8 +45,17 @@ const DashboardHeader = ({profileLinks}) => {
   )
 }
 
-const DashboardMobile = ({profileLinks})=>{
+const DashboardMobile = ()=>{
     const {pathname} = useLocation();
+    const navigate = useNavigate()
+
+    const logOut = () =>{
+        toast.success("Logout Sucessfully..")
+        localStorage.removeItem("aff-info")
+        localStorage.removeItem("aff-token");
+        navigate("/")
+    }
+
     return (
         <div className="row align-items-center justify-content-center">
             <div className="col-xl-12 col-lg-12 col-md-12 mb-4">
@@ -44,8 +70,8 @@ const DashboardMobile = ({profileLinks})=>{
                         <ul className="user-Dashboard-longmenu">
                             {
                                 profileLinks.map((item,index)=>(
-                                    <li className={`${pathname === item.link ?"active":""}`} key={index}>
-                                        <Link to={item.link}>
+                                    <li className={`${pathname === item.link ? "active":""}`} key={index}>
+                                        <Link to={item.link} onClick={item.name === "Sign Out" ? logOut : null} >
                                             {item.icon}{item.name}
                                         </Link>
                                     </li>

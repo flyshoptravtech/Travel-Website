@@ -14,6 +14,8 @@ import AffiliateProfile from './pages/affiliate/AffiliateProfile';
 import AffiliateLogin from './pages/affiliate/AffiliateLogin';
 import BookingPage from './pages/booking/BookingPage';
 import SuccessPage from './pages/booking/SuccessPage';
+import HomeStayList from './pages/affiliate/HomeStayList';
+import AddHomeStay from './pages/affiliate/AddHomeStay';
 
 function App() {
   
@@ -25,11 +27,13 @@ function App() {
           <Routes>
             <Route path='/' element={<Main />} />
             <Route path='/hotel-list/:goingTo/:checkin/:checkout/:guests' element={<HotelListing />} />
-            <Route path='/hotel-view/:id' element={<HotelView />} />
-            <Route path='/booking-page/:id' element={<BookingPage />} />
+            <Route path='/hotel-view/:id/:checkin/:checkout' element={<HotelView />} />
+            <Route path='/booking-page/:id/:checkin/:checkout' element={<BookingPage />} />
             <Route path='/success-page' element={<SuccessPage />} />
             <Route path='/sign-up' element={<Signup />} />
             <Route path='/affiliate-login' element={<AffiliateLogin />} />
+            <Route path='/affiliate-homestay' element={<HomeStayList />} />
+            <Route path='/add-homestay-affiliate' element={<AddHomeStay />} />
             <Route path='/affiliate-signup' element={<AffiliateForm />} />
             <Route path='/affiliate-profile' element={<AffiliateProfile />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />

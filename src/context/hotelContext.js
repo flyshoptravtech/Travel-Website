@@ -23,7 +23,7 @@ export const HotelProvider = ({ children }) => {
         }).catch(() => {
             setHotelList([])
         })
-    }, [apiUrl, axiosHeaders]);
+    }, [apiUrl]);
 
     return (
         <HotelContext.Provider value={{ hotelList,handleHotelSearch,loading,progressBar }}>
