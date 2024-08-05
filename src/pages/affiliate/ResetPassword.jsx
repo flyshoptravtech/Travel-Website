@@ -72,7 +72,7 @@ const ResetPassword = ({id}) => {
               </div>
               <div className="col-xl-12 col-lg-12 col-md-12">
                 <div className="text-end form-group">
-                  <button type="submit" className={`btn btn-md btn-primary w-25 mb-0 ${loading ? "loading" :""} `}>
+                  <button type="submit" className={`btn btn-md btn-primary yivbuibuk mb-0 ${loading ? "loading" :""} `}>
                   {loading?<div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>:"Change Password"}
                   </button>
                 </div>

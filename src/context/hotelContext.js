@@ -12,6 +12,7 @@ export const HotelProvider = ({ children }) => {
     const [progressBar, setProgressBar] = useState(0);
 
     const handleHotelSearch = useCallback((params) => {
+        setloading(true)
         axios.get(apiUrl, {
             params: params,
             headers: axiosHeaders

@@ -2,48 +2,27 @@ import React, { useEffect, useState } from 'react'
 import Layout from '../layout/Layout'
 import { useNavigate } from 'react-router-dom'
 import { DashboardHeader, DashboardMobile } from './DashboardHeader'
-import axios from 'axios'
-import axiosHeaders from '../../helpers/AxiosHeader'
-import { toast } from 'react-toastify'
+import { useHomeContext } from '../../context/homeContext'
 
 const AddHomeStay = () => {
 
     const navigate = useNavigate()
-    const apiUrl = process.env.REACT_APP_API_URL
     const islog1 = localStorage.getItem("aff-info")
     const islog2 = localStorage.getItem("aff-token")
-    const [loading, setloading] = useState(false)
+    const [togglePas, settogglePas] = useState(false)
+    
+    const { homeloading,state,country,city,getStateList,getCityList,handleAddHomeStay,loading,userId,success } = useHomeContext()
     
     useEffect(() => {
         if(islog1 || islog2){}
         else{navigate("/");return;}
     }, [islog1,islog2,navigate])
-
-    const handleAddHomeStay = (e) =>{
-        e.preventDefault()
-        setloading(true)
-        const form = new FormData(e.target)
-        const data = Object.fromEntries(form.entries())
-        axios.post(`${apiUrl}create-home-stay-by-affiliate`,data,axiosHeaders)
-        .then(res=>console.log(res.data))
-        .catch(err=>{
-            const error = err.response.data.errors;
-            const firstErrorKey = Object.keys(error)[0];
-            toast.error(error[firstErrorKey][0]);
-            console.log(error);
-            setloading(false);
-        })
-    }
-
-    useEffect(() => {
-        axios.get(`${apiUrl}countries-list`,{headers: {
-            ...axiosHeaders.headers,
-            Authorization: `Bearer ${islog2}`,
-          },})
-          .then(res=>console.log(res))
-          .catch(err=>console.log(err))
-    }, [])
     
+    useEffect(() => {
+        if(success){
+            navigate("/affiliate-homestay")
+        }
+    }, [success,navigate])
 
   return (
     <Layout>
@@ -93,34 +72,71 @@ const AddHomeStay = () => {
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                 <label className="form-label">Country</label>
-                                                <select className='form-control' name="country">
+                                                <select className='form-control' name="country" onChange={getStateList} disabled={homeloading} >
                                                     <option value="" defaultChecked hidden >--Select--</option>
-                                                    <option value="" >India</option>
+                                                    {
+                                                        country.map((item,index)=>(
+                                                            <option key={index} value={item.id}>{item.name}</option>
+                                                        ))
+                                                    }
                                                 </select>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
                                                 <label className="form-label">State</label>
-                                                <select className='form-control' name="state">
+                                                <select className='form-control' name="state" onChange={getCityList} disabled={homeloading} >
                                                     <option value="" defaultChecked hidden >--Select--</option>
-                                                    <option value="" >India</option>
+                                                    {
+                                                        state.map((item,index)=>(
+                                                            <option key={index} value={item.id}>{item.name}</option>
+                                                        ))
+                                                    }
                                                 </select>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="form-group">
-                                                <label className="form-label">State</label>
-                                                <select className='form-control' name="state">
+                                                <label className="form-label">City</label>
+                                                <select className='form-control' name="city" disabled={homeloading} >
                                                     <option value="" defaultChecked hidden >--Select--</option>
-                                                    <option value="" >India</option>
+                                                    {
+                                                        city.map((item,index)=>(
+                                                            <option key={index} value={item.id}>{item.name}</option>
+                                                        ))
+                                                    }
+                                                </select>
+                                                </div>
+                                            </div>
+                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                                <div className="form-group">
+                                                <label className="form-label">Password</label>
+                                                <div className='position-relative'>
+                                                    <input type={togglePas ? "text" :"password"} name='password' className='form-control' />
+                                                    <span className={`toggle-password position-absolute top-50 end-0 translate-middle-y me-3 fa-solid ${togglePas ? "fa-eye-slash" : "fa-eye"}`} style={{cursor:"pointer"}} onClick={()=>{settogglePas(!togglePas)}} ></span>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                                <div className="form-group">
+                                                <label className="form-label">Confirm-Password</label>
+                                                <input type="password" name='confirm_password' className='form-control' />
+                                                </div>
+                                            </div>
+                                            <div className="col-xl-6 col-lg-6 col-md-6">
+                                                <div className="form-group">
+                                                <label className="form-label">Show on website</label>
+                                                <input type="hidden" name='affiliate_id' value={userId} />
+                                                <select className='form-control' name='is_website' >
+                                                    <option value="1" defaultChecked >Yes</option>
+                                                    <option value="0" >No</option>
                                                 </select>
                                                 </div>
                                             </div>
                                             <div className="col-12 d-flex justify-content-end">
-                                            <button type="submit" className={`btn btn-primary full-width font--bold btn-lg ${loading ? "loading" :""}`}>
-                                                {loading?<div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>:"Submit"}
-                                            </button>
+                                                <button type="submit" className={`btn btn-primary full-width font--bold btn-lg ${loading ? "loading" :""}`}>
+                                                    {loading?<div className="spinner-border" role="status"><span className="visually-hidden">Loading...</span></div>:"Submit"}
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

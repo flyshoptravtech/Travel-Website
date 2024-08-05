@@ -47,6 +47,10 @@ a{
     text-decoration: none !important;
 }
 
+.yivbuibuk{
+    width: 25% !important;
+}
+
 :root,
 [data-bs-theme=light] {
     --bs-primary: #00868b !important;
@@ -5562,6 +5566,9 @@ a#back2Top {
     a.nav-brand.static-logo {
         display: none
     }
+    .yivbuibuk{
+        width: 50% !important;
+    }
 }
 
 @media (max-width:767px) {
@@ -5713,6 +5720,9 @@ a#back2Top {
         margin-left: auto;
         margin-right: auto
     }
+    .yivbuibuk{
+        width: 100% !important;
+    }
 }
 
 @media all and (min-width:768px) and (max-width:1023px) {
@@ -5763,3 +5773,7 @@ a#back2Top {
 .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay{
     background-color: var(--bs-primary) !important;border-color: var(--bs-primary) !important;
 }
+
+.overflow-auto {overflow: auto;scrollbar-width: none;-ms-overflow-style: none;}
+  
+.overflow-auto::-webkit-scrollbar {display: none; }

@@ -2,11 +2,15 @@ const filterReducer = (state,action)=>{
 
     switch (action.type) {
         case "GET_HOTEL_LIST":
+
+            let priceArr = action.payload.map((item)=>item.price)
+            let maxPrice = priceArr.length > 0 ? Math.max(...priceArr) : 200;
+
             return {
                 ...state,
                 filter_products:[...action.payload],
                 all_products:[...action.payload],
-                filters:{...state.filters}
+                filters:{...state.filters,maxPrice}
             };
         
         case "UPDATE_FILTER_VALUE":

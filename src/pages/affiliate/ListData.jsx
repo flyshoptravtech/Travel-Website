@@ -5,20 +5,20 @@ const ListData = ({homeList}) => {
     <table className='table table-striped'>
         <thead>
             <tr>
-                <td>Sr.No</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Number</td>
-                <td>Address</td>
-                <td>Country</td>
-                <td>State</td>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Address</th>
+                <th>Country</th>
+                <th>State</th>
             </tr>
         </thead>
         <tbody>
             {
                 homeList.map((item, index) => (
                     <tr key={index}>
-                        <td>{index + 1}</td>
+                        <td align='center' >{index + 1}</td>
                         <td>{item.first_name} {item.last_name}</td>
                         <td>{item.email}</td>
                         <td>{item.contact_number}</td>

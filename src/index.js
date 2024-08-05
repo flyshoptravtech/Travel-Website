@@ -12,13 +12,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-multi-carousel/lib/styles.css"
 import { HotelProvider } from './context/hotelContext';
 import { FilterProvider } from './context/filterContext';
+import { HomeProvider } from './context/homeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HotelProvider>
       <FilterProvider>
-        <App />
+        <HomeProvider>
+          <App />
+        </HomeProvider>
       </FilterProvider>
     </HotelProvider>
   </React.StrictMode>
