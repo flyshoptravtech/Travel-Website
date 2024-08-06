@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFilterContext } from '../../context/filterContext';
+import ReactSlider from 'react-slider';
 
 const Sidebar = ({searchNo}) => {
   const rating = [1,2,3,4,5];
   const propertyArr= ['Villas','Luxury Suit']
-  const {handleUpdateFilter} = useFilterContext()
+  const {handleUpdateFilter,handlePriceFilter,filters:{minPrice,maxPrice}} = useFilterContext()
+  const [values, setvalues] = useState([minPrice,maxPrice])
+  
+  useEffect(() => {
+    setvalues([minPrice,maxPrice])
+  }, [minPrice,maxPrice])
+  
+  const handleChangeValues = (e)=>{
+    setvalues(e)
+    handlePriceFilter(e)
+  }
   
   return (
     <div className="col-xl-3 col-lg-4 col-md-12">
@@ -45,6 +56,19 @@ const Sidebar = ({searchNo}) => {
                 <h6 className="sidebar-subTitle fs-6 fw-medium m-0">Pricing Range in IN ₹</h6>
               </div>
               <div className="searchBar-single-wrap">
+                <ReactSlider 
+                  className='cusSlider'
+                  onChange={handleChangeValues}
+                  value={values}
+                  min={minPrice}
+                  max={maxPrice}
+                  step={10}
+                  minDistance={100}
+                />
+                <div className='d-flex align-items-center justify-content-between'>
+                  <span>{values[0]}</span>
+                  <span>{values[1]}</span>
+                </div>
                 {/* <input type="text" className="js-range-slider" name="my_range" defaultValue data-skin="round" data-type="double" data-min={0} data-max={1000} data-grid="false" /> */}
               </div>
             </div>

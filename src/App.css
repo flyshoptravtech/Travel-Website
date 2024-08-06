@@ -5777,3 +5777,16 @@ a#back2Top {
 .overflow-auto {overflow: auto;scrollbar-width: none;-ms-overflow-style: none;}
   
 .overflow-auto::-webkit-scrollbar {display: none; }
+
+.cusSlider{
+    height: 15px;margin-top: 20px;
+}
+.track.track-1,.track.track-2,.track.track-0{
+    height: 8px;
+}
+.track.track-0,.track.track-2{border-radius: 3px 3px;}
+.track.track-2,.track.track-0{background: #d7d8d9;}
+.track.track-1{background: var(--bs-primary);}
+.thumb.thumb-0,.thumb.thumb-1{
+    height: 18px;width: 18px;background: white;border: 1px solid #ddd;top: -5px;border-radius: 50%;cursor: pointer;
+}  

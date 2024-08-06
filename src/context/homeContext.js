@@ -2,17 +2,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import axiosHeaders from "../helpers/AxiosHeader";
 import { toast } from "react-toastify";
-import CryptoJS from 'crypto-js'
 
 const HomeStayContext = createContext()
 
 export const HomeProvider = ({children}) =>{
 
     const apiUrl = process.env.REACT_APP_API_URL
-    const secret = process.env.REACT_APP_SECRET_KEY
     const islog1 = localStorage.getItem("aff-info")
     const islog2 = localStorage.getItem("aff-token")
-    const [userId, setuserId] = useState(null)
     const [loading, setloading] = useState(false)
     const [homeloading, setHomeloading] = useState(true)
     const [country, setcountry] = useState([])
@@ -78,24 +75,16 @@ export const HomeProvider = ({children}) =>{
         })
     }
 
-    const getAffId = () =>{
-        if (islog1) {
-            let bytes = CryptoJS.AES.decrypt(islog1, secret);
-            let userInfo = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-            setuserId(userInfo._id)
-        }
-    }
-
     useEffect(() => {
         if (islog1 || islog2) {
           getCountryList();
-          getAffId();
         }
+        // eslint-disable-next-line
     }, [islog1, islog2]);
     
 
     return (
-        <HomeStayContext.Provider value={{country,state,city,getStateList,loading,getCityList,homeloading,handleAddHomeStay,userId,success }} >
+        <HomeStayContext.Provider value={{country,state,city,getStateList,loading,getCityList,homeloading,handleAddHomeStay,success,setsuccess }} >
             {children}
         </HomeStayContext.Provider>
     )

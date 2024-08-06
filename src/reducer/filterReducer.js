@@ -5,12 +5,17 @@ const filterReducer = (state,action)=>{
 
             let priceArr = action.payload.map((item)=>item.price)
             let maxPrice = priceArr.length > 0 ? Math.max(...priceArr) : 200;
+            const remainder = maxPrice % 10
+            if (remainder !== 0) {
+                const diff = 10 - remainder;
+                maxPrice = maxPrice + diff;
+            }
 
             return {
                 ...state,
                 filter_products:[...action.payload],
                 all_products:[...action.payload],
-                filters:{...state.filters,maxPrice}
+                filters:{...state.filters,maxPrice:maxPrice}
             };
         
         case "UPDATE_FILTER_VALUE":
@@ -35,13 +40,25 @@ const filterReducer = (state,action)=>{
                     [name]: value,
                   },
                 };
+            }            
+
+        case "UPDATE_PRICE_RANGE" :
+            let priceValues = action.payload;
+            let {filter_products} = state;
+
+            const tempPriceProduct = filter_products.filter((product) => {
+                return product.price >= priceValues[0] && product.price <= priceValues[1];
+            });
+
+            return {
+                ...state,filters: { ...state.filters, price_range: priceValues },filter_products: tempPriceProduct
             }
 
         case "FILTER_PRODUCTS" : 
             const { all_products } = state;
             let tempFilterProduct = [...all_products];
 
-            const { text,property_type,price_range,rating,amenities } = state.filters;
+            const { text,property_type,rating,price_range,amenities } = state.filters;
 
             if (text) {
                 tempFilterProduct = tempFilterProduct.filter((product) => {
@@ -59,11 +76,18 @@ const filterReducer = (state,action)=>{
                     return property_type.includes(product.property_type);
                 });
             }
+
+            if (price_range && price_range.length === 2) {
+                tempFilterProduct = tempFilterProduct.filter((product) => {
+                    return product.price >= price_range[0] && product.price <= price_range[1];
+                });
+            }
+
             if (rating.length === 0) return {...state,filter_products:tempFilterProduct};
             if (property_type.length === 0) return {...state,filter_products:tempFilterProduct};
 
             return { ...state,filter_products:tempFilterProduct }
-            
+
         default: return state;
     }
 }

@@ -10,10 +10,10 @@ const initialState = {
     filters:{
         text:"",
         property_type:[],
-        price_range:'',
+        price_range:[],
         rating:[],
         amenities:[],
-        minPrice:100,
+        minPrice:1000,
         maxPrice:200,
     }
 }
@@ -32,6 +32,10 @@ export const FilterProvider = ({ children })=>{
         return dispatch({ type: "UPDATE_FILTER_VALUE", payload: { name, value } })
     }
 
+    const handlePriceFilter = (e)=>{
+        return dispatch({ type:"UPDATE_PRICE_RANGE" ,payload: e })
+    }
+
     useEffect(() => {
         dispatch({ type : "FILTER_PRODUCTS" })
     }, [hotelList,state.filters])
@@ -42,7 +46,7 @@ export const FilterProvider = ({ children })=>{
     }, [hotelList])
 
     return (
-        <FilterConext.Provider value={{...state,handleUpdateFilter}} >
+        <FilterConext.Provider value={{...state,handleUpdateFilter,handlePriceFilter}} >
             {children}
         </FilterConext.Provider>
     )

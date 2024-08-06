@@ -3,15 +3,18 @@ import Layout from '../layout/Layout'
 import { useNavigate } from 'react-router-dom'
 import { DashboardHeader, DashboardMobile } from './DashboardHeader'
 import { useHomeContext } from '../../context/homeContext'
+import CryptoJS from 'crypto-js'
 
 const AddHomeStay = () => {
 
     const navigate = useNavigate()
     const islog1 = localStorage.getItem("aff-info")
     const islog2 = localStorage.getItem("aff-token")
+    const [userId, setuserId] = useState("")
+    const secret = process.env.REACT_APP_SECRET_KEY
     const [togglePas, settogglePas] = useState(false)
     
-    const { homeloading,state,country,city,getStateList,getCityList,handleAddHomeStay,loading,userId,success } = useHomeContext()
+    const { homeloading,state,country,city,getStateList,getCityList,handleAddHomeStay,loading,success,setsuccess } = useHomeContext()
     
     useEffect(() => {
         if(islog1 || islog2){}
@@ -19,10 +22,20 @@ const AddHomeStay = () => {
     }, [islog1,islog2,navigate])
     
     useEffect(() => {
+        if (islog1) {
+            let bytes = CryptoJS.AES.decrypt(islog1, secret);
+            let userInfo = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            setuserId(userInfo._id)
+        }
+    }, [islog1,secret])
+    
+
+    useEffect(() => {
         if(success){
             navigate("/affiliate-homestay")
+            setsuccess(false)
         }
-    }, [success,navigate])
+    }, [success,navigate,setsuccess])
 
   return (
     <Layout>
