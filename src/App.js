@@ -26,7 +26,7 @@ function App() {
         <ScrollTop/>
           <Routes>
             <Route path='/' element={<Main />} />
-            <Route path='/hotel-list/:goingTo/:checkin/:checkout/:guests' element={<HotelListing />} />
+            <Route path='/hotel-list/:goingTo/:cityName/:checkin/:checkout/:guests' element={<HotelListing />} />
             <Route path='/hotel-view/:id/:checkin/:checkout' element={<HotelView />} />
             <Route path='/booking-page/:id/:checkin/:checkout' element={<BookingPage />} />
             <Route path='/success-page' element={<SuccessPage />} />

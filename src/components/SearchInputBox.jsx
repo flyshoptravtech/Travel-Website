@@ -6,8 +6,8 @@ import axiosHeaders from "../helpers/AxiosHeader";
 
 const SearchInputBox = () => {
 
-  const {goingTo} = useParams()
-  const [city, setCity] = useState("Delhi")
+  const {goingTo,cityName} = useParams()
+  const [city, setCity] = useState(cityName || "Delhi")
   const [CityOptions, setCityOptions] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -40,13 +40,13 @@ const SearchInputBox = () => {
     .then((response) => {
       let cityOp = response.data.cities;
       cityOp = cityOp.map((option) => ({
-        value: option.id,
+        value: `${option.id}+${option.name}`,
         label: option.name,
       }));
       setCityOptions(cityOp);
         if (goingTo) {
-          const selectedCity = cityOp.find((option) => option.value === goingTo);
-          setCity(selectedCity || "");
+          const selectedCity = cityOp.find((option) => option.label === cityName);
+          setCity(selectedCity);
         }else{
           const defaultCity = cityOp.find((option) => option.label === "Delhi");
           setCity(defaultCity)
@@ -62,9 +62,8 @@ const SearchInputBox = () => {
     setTimeout(() => {
       const filteredOptions  = CityOptions.filter(option=>option.label.toLowerCase().includes(searchValue.toLowerCase()))
       callback(filteredOptions)
-    }, 100);
+    }, 400);
   }
-
 
   return (
     <div>

@@ -21,14 +21,13 @@ const LoginModal = () => {
         axios.post(`${apiUrl}login`,data,axiosHeaders)
         .then(res=>{
             const mess = res.data.message
-            if(mess.username){
-                toast.error(mess.username[0])
-                return;
-            }else if(mess.password){
-                toast.error(mess.password[0])
-            }else if(mess.error){
-                toast.error(mess.error)
-            }else{
+            let objMsg = Object.keys(mess)[0]
+            if(mess.error){
+                toast.error(mess[objMsg])
+            }else if(Array.isArray(mess)){
+                toast.error(mess[objMsg][0])
+            }
+            else{
                 toast.success(mess)
                 closeBtn.current.click()
                 localStorage.setItem("authToken",res.data.token)

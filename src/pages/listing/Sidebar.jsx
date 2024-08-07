@@ -56,20 +56,19 @@ const Sidebar = ({searchNo}) => {
                 <h6 className="sidebar-subTitle fs-6 fw-medium m-0">Pricing Range in IN ₹</h6>
               </div>
               <div className="searchBar-single-wrap">
-                <ReactSlider 
+                <ReactSlider
                   className='cusSlider'
                   onChange={handleChangeValues}
                   value={values}
                   min={minPrice}
                   max={maxPrice}
                   step={10}
-                  minDistance={100}
+                  renderThumb={(props) => <div key={props.key} {...props} ><span></span></div>}
                 />
                 <div className='d-flex align-items-center justify-content-between'>
                   <span>{values[0]}</span>
                   <span>{values[1]}</span>
                 </div>
-                {/* <input type="text" className="js-range-slider" name="my_range" defaultValue data-skin="round" data-type="double" data-min={0} data-max={1000} data-grid="false" /> */}
               </div>
             </div>
             <div className="searchBar-single px-3 py-3 border-bottom">

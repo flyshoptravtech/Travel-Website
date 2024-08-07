@@ -13,16 +13,17 @@ export const HotelProvider = ({ children }) => {
 
     const handleHotelSearch = useCallback((params) => {
         setloading(true)
+        setProgressBar(30)
         axios.get(apiUrl, {
             params: params,
             headers: axiosHeaders
         }).then((res) => {
-            setProgressBar(30)
             setHotelList(res.data);
-            setloading(false)
-            setProgressBar(100)
         }).catch(() => {
-            setHotelList([])
+            setHotelList([])          
+        }).finally(()=>{
+            setProgressBar(100)
+            setloading(false)
         })
     }, [apiUrl]);
 

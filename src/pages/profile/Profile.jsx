@@ -7,18 +7,19 @@ import CryptoJS from "crypto-js"
 const Profile = () => {
 
     const secret = process.env.REACT_APP_SECRET_KEY
-    const [isEditable, setisEditable] = useState(true)
-    const navigate = useNavigate();
     const authToken = localStorage.getItem("authToken")
     const encryptedData = localStorage.getItem("userInfo")
-    const bytes = CryptoJS.AES.decrypt(encryptedData, secret);
-    const userInfo = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    const navigate = useNavigate();
+    const [isEditable, setisEditable] = useState(true)
+    const [userInfo, setuserInfo] = useState(false)
 
     useEffect(() => {
-        if(!authToken){
-            navigate("/")
-            return;
+        if(authToken || encryptedData){
+            const bytes = CryptoJS.AES.decrypt(encryptedData, secret);
+            const secresInfo = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+            setuserInfo(secresInfo)
         }
+        else{navigate("/");return;}
     }, [authToken,navigate])
     
     const toggleEdit = ()=>{
@@ -42,7 +43,7 @@ const Profile = () => {
                             }
                         </div>
                     </div>
-                    <form>
+                    <form onSubmit={e=>e.preventDefault()} >
                         <div className="card-body">
                             <div className="row align-items-center justify-content-start">
                             <div className="col-xl-6 col-lg-6 col-md-6">
