@@ -20,7 +20,8 @@ const Profile = () => {
             setuserInfo(secresInfo)
         }
         else{navigate("/");return;}
-    }, [authToken,navigate])
+        // eslint-disable-next-line
+    }, [authToken,navigate,])
     
     const toggleEdit = ()=>{
         setisEditable(!isEditable)

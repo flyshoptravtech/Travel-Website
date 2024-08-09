@@ -1,9 +1,9 @@
 import React from 'react'
-import logo_light from "../../assets/img/logo-icon.png"
-import payment from "../../assets/img/payment.png"
-import partner_1 from "../../assets/img/mytrip.png"
-import partner_2 from "../../assets/img/tripadv.png"
-import partner_3 from "../../assets/img/goibibo.png"
+import logo_light from "../../../assets/img/logo-icon.png"
+import payment from "../../../assets/img/payment.png"
+import partner_1 from "../../../assets/img/mytrip.png"
+import partner_2 from "../../../assets/img/tripadv.png"
+import partner_3 from "../../../assets/img/goibibo.png"
 import { Link } from 'react-router-dom'
 
 const FooterText = () => {

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer/Footer";
-import HeaderLight from "../../components/HeaderLight";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import LoadingBar from "react-top-loading-bar";
+import HeaderLight from "./HeaderLight";
+import Footer from "./Footer/Footer";
 
-const Layout = ({ header, children, progressBar }) => {
+const Layout = ({ children, progressBar }) => {
 
   const isAff1 = localStorage.getItem("aff-info")
   const isAff2 = localStorage.getItem("aff-token")
@@ -68,20 +67,7 @@ const Layout = ({ header, children, progressBar }) => {
 
   return (
     <div>
-      <LoadingBar color="#00868b" height={4} progress={progess} onLoaderFinished={()=>{setprogess(0)}} />
-      {header === "light" ? (
-        <Header
-          navLinks={navLinks}
-          activeLink={pathname}
-          isFixed={isFixed}
-          width={viewportWidth}
-          mobNav={mobNav}
-          setmobNav={setmobNav}
-          authToken={authToken}
-          logout={logOut}
-          userLinks={authToken === null ? null : userLinks}
-        />
-      ) : (
+      <LoadingBar className="bg-primary" height={4} progress={progess} onLoaderFinished={()=>{setprogess(0)}} />
         <HeaderLight
           navLinks={navLinks}
           activeLink={pathname}
@@ -93,7 +79,6 @@ const Layout = ({ header, children, progressBar }) => {
           logout={logOut}
           userLinks={authToken === null ? null : userLinks}
         />
-      )}
       {children}
       <Footer />
     </div>

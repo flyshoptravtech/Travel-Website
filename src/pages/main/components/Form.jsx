@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import twoFive from "../../../assets/img/banner-3.jpg"
+import twoFive from "../../../assets/img/banner.jpg"
 import flatpickr from 'flatpickr'
 import svg_stroke from "../../../assets/img/svg_stroke.png"
 import SearchInputBox from '../../../components/SearchInputBox'

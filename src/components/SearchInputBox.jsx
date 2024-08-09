@@ -33,6 +33,9 @@ const SearchInputBox = () => {
     clearIndicator:()=>({
       backgroundColor:"transparent"
     }),
+    option: (base, state) => ({
+      ...base,backgroundColor: state.isSelected ? '#cd2c22' : '',':hover': {backgroundColor: '#fdd8d8',},
+    }),
   }
   
   useEffect(() => {
