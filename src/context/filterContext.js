@@ -13,7 +13,7 @@ const initialState = {
         price_range:[],
         rating:[],
         amenities:[],
-        minPrice:1000,
+        minPrice:100,
         maxPrice:200,
     }
 }

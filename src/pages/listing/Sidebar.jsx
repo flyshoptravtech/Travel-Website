@@ -3,11 +3,20 @@ import { useFilterContext } from '../../context/filterContext';
 import ReactSlider from 'react-slider';
 
 const Sidebar = ({searchNo}) => {
-  const rating = [1,2,3,4,5];
-  const propertyArr= ['Villas','Luxury Suit']
-  const {handleUpdateFilter,handlePriceFilter,filters:{minPrice,maxPrice}} = useFilterContext()
+  // const rating = [1,2,3,4,5];
+  const {handleUpdateFilter,handlePriceFilter,all_products,filters:{minPrice,maxPrice}} = useFilterContext()
   const [values, setvalues] = useState([minPrice,maxPrice])
   
+  const getUniqueData = (data, property) => {
+    let newValue = data.map((curElem) => {
+      return curElem[property];
+    })
+    return (newValue = [...new Set(newValue)])
+  }
+
+  const propertyArr = getUniqueData(all_products, 'property_type')
+  const rating = getUniqueData(all_products, 'rating')
+
   useEffect(() => {
     setvalues([minPrice,maxPrice])
   }, [minPrice,maxPrice])
@@ -84,18 +93,19 @@ const Sidebar = ({searchNo}) => {
                           <div className="frm-slicing d-flex align-items-center">
                             <div className="frm-slicing-first">
                               <input className="form-check-input" type="checkbox" id={`${item}star`} name='rating' value={item} onChange={handleUpdateFilter} />
-                              <label className="form-check-label" htmlFor={`${item}star`} />
-                            </div>
-                            <div className="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
-                              <div className="frms-flex d-flex align-items-center">
-                                <div className="frm-slicing-ico text-md">
-                                  {
-                                    Array(item).fill(null).map((_,index)=>(
-                                      <i key={index} className="fa fa-star text-warning" />
-                                    ))
-                                  }
+                              <label className="form-check-label" htmlFor={`${item}star`} >
+                                <div className="frm-slicing-end d-flex align-items-center justify-content-between full-width ps-1">
+                                  <div className="frms-flex d-flex align-items-center">
+                                    <div className="frm-slicing-ico text-md">
+                                      {
+                                        Array(item).fill(null).map((_,index)=>(
+                                          <i key={index} className="fa fa-star text-warning" />
+                                        ))
+                                      }
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
+                              </label>
                             </div>
                           </div>
                         </div>

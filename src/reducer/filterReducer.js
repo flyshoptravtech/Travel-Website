@@ -5,17 +5,15 @@ const filterReducer = (state,action)=>{
 
             let priceArr = action.payload.map((item)=>item.price)
             let maxPrice = priceArr.length > 0 ? Math.max(...priceArr) : 200;
-            const remainder = maxPrice % 10
-            if (remainder !== 0) {
-                const diff = 10 - remainder;
-                maxPrice = maxPrice + diff;
-            }
+            let minPrice = priceArr.length > 0 ? Math.min(...priceArr) : 100;
+            maxPrice = adjustPrice(maxPrice);
+            minPrice = adjustPrice(minPrice, true);
 
             return {
                 ...state,
                 filter_products:[...action.payload],
                 all_products:[...action.payload],
-                filters:{...state.filters,maxPrice:maxPrice}
+                filters:{...state.filters,maxPrice,minPrice}
             };
         
         case "UPDATE_FILTER_VALUE":
@@ -91,5 +89,16 @@ const filterReducer = (state,action)=>{
         default: return state;
     }
 }
+
+const adjustPrice = (price, isMin = false) => {
+    const remainder = price % 10;
+    if (remainder !== 0) {
+        const diff = isMin ? remainder : 10 - remainder;
+        price = isMin ? price - diff : price + diff;
+    } else {
+        price = isMin ? price - 10 : price + 100;
+    }
+    return price;
+};
 
 export default filterReducer
