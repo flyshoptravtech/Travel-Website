@@ -3,7 +3,6 @@ import { useFilterContext } from '../../context/filterContext';
 import ReactSlider from 'react-slider';
 
 const Sidebar = ({searchNo}) => {
-  // const rating = [1,2,3,4,5];
   const {handleUpdateFilter,handlePriceFilter,all_products,filters:{minPrice,maxPrice}} = useFilterContext()
   const [values, setvalues] = useState([minPrice,maxPrice])
   
