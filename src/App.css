@@ -5311,7 +5311,7 @@ a#back2Top {
         border-bottom: 1px solid #e9ecef;
         background: #fff;
         position: fixed;
-        z-index: 999;
+        z-index: 999999;
         width: 100%;
         top: 0;
         transition: .2s ease-in;
